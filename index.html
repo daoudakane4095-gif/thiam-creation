@@ -1,3214 +1,1986 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>THIAM CRÉATION — Couture & Prêt-à-Porter</title>
-
-  <meta name="description"
-        content="THIAM CRÉATION — Couture, confection, prêt-à-porter et créations sur mesure à Dakar, Sénégal.">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --black: #070707;
-      --black2: #0d0d0d;
-      --black3: #141414;
-      --gray: #242424;
-      --gray2: #777;
-      --gray3: #aaa;
-      --white: #fff;
-      --border: rgba(255,255,255,.12);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: Arial, Helvetica, sans-serif;
-      overflow-x: hidden;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button,
-    select {
-      font-family: inherit;
-    }
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(7,7,7,.90);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav {
-      max-width: 1250px;
-      height: 76px;
-      margin: auto;
-      padding: 0 22px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      white-space: nowrap;
-    }
-
-    .brand img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-    }
-
-    .brand-text {
-      font-size: 16px;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
-
-    .brand-text span {
-      color: #777;
-      font-weight: 400;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .nav-links a {
-      color: #ccc;
-      font-size: 13px;
-      transition: .3s;
-    }
-
-    .nav-links a:hover {
-      color: white;
-    }
-
-    .cart-btn {
-      border: 1px solid #555;
-      background: #171717;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: .3s;
-    }
-
-    .cart-btn:hover {
-      background: #292929;
-    }
-
-    #cartCount {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 20px;
-      height: 20px;
-      margin-left: 4px;
-      border-radius: 50%;
-      background: white;
-      color: black;
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    .menu-btn {
-      display: none;
-      background: transparent;
-      color: white;
-      border: 0;
-      font-size: 28px;
-      cursor: pointer;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      min-height: 100vh;
-      padding: 120px 22px 70px;
-
-      display: flex;
-      align-items: center;
-
-      background:
-        radial-gradient(circle at 15% 30%, #303030 0%, transparent 30%),
-        radial-gradient(circle at 85% 50%, #222 0%, transparent 35%),
-        linear-gradient(120deg, #050505, #181818 50%, #070707);
-    }
-
-    .hero-inner {
-      width: 100%;
-      max-width: 1250px;
-      margin: auto;
-
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .hero-logo {
-      width: min(430px, 90%);
-      max-height: 260px;
-      object-fit: contain;
-      display: block;
-      margin: 20px 0;
-      filter: drop-shadow(0 20px 40px rgba(0,0,0,.65));
-    }
-
-    .eyebrow {
-      color: #888;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 11px;
-      margin-bottom: 12px;
-    }
-
-    .hero h1 {
-      font-size: clamp(42px, 7vw, 78px);
-      line-height: .95;
-      letter-spacing: -3px;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 span {
-      color: #888;
-    }
-
-    .hero p {
-      max-width: 600px;
-      color: #aaa;
-      line-height: 1.7;
-      font-size: 17px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 22px;
-      border-radius: 5px;
-      font-size: 13px;
-      font-weight: 800;
-      transition: .3s;
-    }
-
-    .btn-white {
-      background: white;
-      color: black;
-    }
-
-    .btn-white:hover {
-      transform: translateY(-3px);
-      background: #ddd;
-    }
-
-    .btn-outline {
-      border: 1px solid #555;
-      color: white;
-    }
-
-    .btn-outline:hover {
-      background: #222;
-    }
-
-    .hero-card {
-      min-height: 560px;
-      border: 1px solid var(--border);
-      background:
-        linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.01)),
-        #101010;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "THIAM";
-      position: absolute;
-      font-size: 150px;
-      font-weight: 900;
-      color: rgba(255,255,255,.025);
-      transform: rotate(-15deg);
-    }
-
-    .hero-card-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .scissors {
-      font-size: 90px;
-      margin-bottom: 15px;
-    }
-
-    .hero-card h2 {
-      font-size: 38px;
-      letter-spacing: 3px;
-    }
-
-    .hero-card p {
-      color: #777;
-      margin-top: 10px;
-    }
-
-    /* =========================
-       FEATURES
-    ========================= */
-
-    .features {
-      max-width: 1200px;
-      margin: -30px auto 0;
-      position: relative;
-      z-index: 10;
-
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-
-      background: #141414;
-      border: 1px solid var(--border);
-    }
-
-    .feature {
-      padding: 25px 20px;
-      border-right: 1px solid var(--border);
-    }
-
-    .feature:last-child {
-      border-right: 0;
-    }
-
-    .feature-icon {
-      font-size: 25px;
-      margin-bottom: 10px;
-    }
-
-    .feature h3 {
-      font-size: 13px;
-      margin-bottom: 6px;
-    }
-
-    .feature p {
-      color: #777;
-      font-size: 12px;
-      line-height: 1.5;
-    }
-
-    /* =========================
-       SECTIONS
-    ========================= */
-
-    section {
-      padding: 100px 22px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .section-top {
-      margin-bottom: 45px;
-    }
-
-    .section-title {
-      font-size: clamp(35px, 6vw, 60px);
-      letter-spacing: -2px;
-    }
-
-    .section-description {
-      color: #777;
-      max-width: 650px;
-      margin-top: 12px;
-      line-height: 1.7;
-    }
-
-    /* =========================
-       SERVICES
-    ========================= */
-
-    .services {
-      background: #0c0c0c;
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .service {
-      padding: 35px;
-      background: #141414;
-      border: 1px solid var(--border);
-      transition: .3s;
-    }
-
-    .service:hover {
-      transform: translateY(-5px);
-      border-color: #555;
-    }
-
-    .service-number {
-      color: #666;
-      font-size: 13px;
-      margin-bottom: 30px;
-    }
-
-    .service h3 {
-      font-size: 24px;
-      margin-bottom: 12px;
-    }
-
-    .service p {
-      color: #777;
-      line-height: 1.7;
-      font-size: 14px;
-    }
-
-    /* =========================
-       COLLECTION
-    ========================= */
-
-    .collection {
-      background: #080808;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .product {
-      background: #151515;
-      border: 1px solid var(--border);
-      overflow: hidden;
-      transition: .3s;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-      border-color: #555;
-    }
-
-    .product-image {
-      height: 390px;
-      background: #202020;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: .5s;
-    }
-
-    .product:hover .product-image img {
-      transform: scale(1.05);
-    }
-
-    .product-info {
-      padding: 20px;
-    }
-
-    .product-number {
-      color: #666;
-      font-size: 10px;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
-    }
-
-    .product-info h3 {
-      font-size: 19px;
-      margin-bottom: 7px;
-    }
-
-    .product-description {
-      color: #777;
-      font-size: 13px;
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
-
-    .product-price {
-      font-size: 19px;
-      font-weight: 900;
-      margin-bottom: 15px;
-    }
-
-    .size-label {
-      display: block;
-      color: #aaa;
-      font-size: 11px;
-      margin-bottom: 7px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .size-select {
-      width: 100%;
-      padding: 12px;
-      background: #0b0b0b;
-      color: white;
-      border: 1px solid #444;
-      border-radius: 4px;
-      outline: none;
-      margin-bottom: 12px;
-    }
-
-    .size-select:focus {
-      border-color: #888;
-    }
-
-    .product-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .add-cart,
-    .buy-now {
-      border: 0;
-      padding: 12px 8px;
-      cursor: pointer;
-      border-radius: 4px;
-      font-weight: 800;
-      font-size: 11px;
-      transition: .3s;
-    }
-
-    .add-cart {
-      background: white;
-      color: black;
-    }
-
-    .add-cart:hover {
-      background: #ddd;
-    }
-
-    .buy-now {
-      background: #242424;
-      color: white;
-      border: 1px solid #444;
-    }
-
-    .buy-now:hover {
-      background: #333;
-    }
-
-    /* =========================
-       GALERIE
-    ========================= */
-
-    .gallery {
-      background: #101010;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
-
-    .gallery-item {
-      height: 360px;
-      overflow: hidden;
-      background: #171717;
-      border: 1px solid var(--border);
-      cursor: pointer;
-      position: relative;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: .5s;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.06);
-    }
-
-    .gallery-label {
-      position: absolute;
-      left: 14px;
-      bottom: 14px;
-      background: rgba(0,0,0,.75);
-      padding: 8px 12px;
-      font-size: 10px;
-      letter-spacing: 1px;
-    }
-
-    /* =========================
-       VIDEO
-    ========================= */
-
-    .video-section {
-      background: #080808;
-    }
-
-    .video-box {
-      max-width: 850px;
-      margin: auto;
-      border: 1px solid var(--border);
-      background: #000;
-      overflow: hidden;
-    }
-
-    .video-box video {
-      width: 100%;
-      max-height: 700px;
-      display: block;
-      background: black;
-    }
-
-    /* =========================
-       ABOUT
-    ========================= */
-
-    .about {
-      background: #0c0c0c;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .about-box {
-      min-height: 450px;
-      border: 1px solid var(--border);
-      background:
-        radial-gradient(circle at center, #272727, #0b0b0b 65%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .about-box .icon {
-      font-size: 90px;
-      margin-bottom: 15px;
-    }
-
-    .about-text h2 {
-      font-size: clamp(38px, 5vw, 58px);
-      line-height: 1;
-      margin-bottom: 25px;
-    }
-
-    .about-text p {
-      color: #888;
-      line-height: 1.8;
-      margin-bottom: 15px;
-    }
-
-    /* =========================
-       CONTACT
-    ========================= */
-
-    .contact {
-      background: #171717;
-      text-align: center;
-    }
-
-    .contact-card {
-      max-width: 850px;
-      margin: auto;
-      padding: 60px 25px;
-      background: #0b0b0b;
-      border: 1px solid var(--border);
-    }
-
-    .contact-card h2 {
-      font-size: clamp(35px, 6vw, 58px);
-      margin-bottom: 15px;
-    }
-
-    .contact-card p {
-      color: #888;
-      margin-bottom: 25px;
-    }
-
-    .whatsapp {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: white;
-      color: black;
-      padding: 15px 25px;
-      border-radius: 5px;
-      font-weight: 900;
-      transition: .3s;
-    }
-
-    .whatsapp:hover {
-      transform: translateY(-3px);
-      background: #ddd;
-    }
-
-    .phone {
-      color: #777;
-      margin-top: 20px;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      background: #050505;
-      border-top: 1px solid var(--border);
-      padding: 35px 22px;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: auto;
-
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    footer p {
-      color: #666;
-      font-size: 13px;
-    }
-
-    /* =========================
-       LIGHTBOX
-    ========================= */
-
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 5000;
-
-      display: none;
-      align-items: center;
-      justify-content: center;
-
-      background: rgba(0,0,0,.95);
-      padding: 25px;
-    }
-
-    .lightbox.active {
-      display: flex;
-    }
-
-    .lightbox img {
-      max-width: 95%;
-      max-height: 90vh;
-      object-fit: contain;
-    }
-
-    .close-lightbox {
-      position: fixed;
-      top: 15px;
-      right: 22px;
-      background: transparent;
-      border: 0;
-      color: white;
-      font-size: 38px;
-      cursor: pointer;
-    }
-
-    /* =========================
-       CART
-    ========================= */
-
-    .overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 3999;
-      background: rgba(0,0,0,.75);
-      display: none;
-    }
-
-    .overlay.active {
-      display: block;
-    }
-
-    .cart {
-      position: fixed;
-      top: 0;
-      right: -480px;
-
-      width: min(480px,100%);
-      height: 100vh;
-
-      z-index: 4000;
-
-      background: #111;
-      border-left: 1px solid #333;
-
-      display: flex;
-      flex-direction: column;
-
-      transition: .35s;
-    }
-
-    .cart.active {
-      right: 0;
-    }
-
-    .cart-head {
-      padding: 22px;
-      border-bottom: 1px solid #292929;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .cart-head h2 {
-      font-size: 22px;
-    }
-
-    .close-cart {
-      background: transparent;
-      border: 0;
-      color: white;
-      font-size: 30px;
-      cursor: pointer;
-    }
-
-    .cart-items {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px;
-    }
-
-    .empty-cart {
-      text-align: center;
-      color: #777;
-      padding: 60px 10px;
-    }
-
-    .cart-item {
-      padding: 16px 0;
-      border-bottom: 1px solid #292929;
-    }
-
-    .cart-item-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-    }
-
-    .cart-item-name {
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-
-    .cart-item-size {
-      color: #888;
-      font-size: 12px;
-    }
-
-    .cart-item-price {
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .cart-item-bottom {
-      margin-top: 12px;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .quantity {
-      display: flex;
-      align-items: center;
-      border: 1px solid #444;
-    }
-
-    .quantity button {
-      width: 32px;
-      height: 30px;
-      border: 0;
-      background: #222;
-      color: white;
-      cursor: pointer;
-    }
-
-    .quantity span {
-      width: 35px;
-      text-align: center;
-      font-size: 13px;
-    }
-
-    .remove-item {
-      background: transparent;
-      border: 0;
-      color: #888;
-      text-decoration: underline;
-      cursor: pointer;
-      font-size: 11px;
-    }
-
-    .cart-bottom {
-      padding: 20px;
-      border-top: 1px solid #292929;
-    }
-
-    .total-line {
-      display: flex;
-      justify-content: space-between;
-      font-size: 20px;
-      font-weight: 900;
-      margin-bottom: 15px;
-    }
-
-    .checkout {
-      width: 100%;
-      padding: 16px;
-      border: 0;
-      border-radius: 5px;
-      background: white;
-      color: black;
-      font-weight: 900;
-      cursor: pointer;
-    }
-
-    .checkout:hover {
-      background: #ddd;
-    }
-
-    /* =========================
-       TOAST
-    ========================= */
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 25px;
-      transform: translate(-50%, 120px);
-
-      background: white;
-      color: black;
-
-      padding: 13px 20px;
-      border-radius: 30px;
-
-      font-size: 13px;
-      font-weight: 800;
-
-      z-index: 7000;
-
-      opacity: 0;
-      transition: .35s;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translate(-50%, 0);
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media(max-width: 900px) {
-
-      .nav {
-        height: 68px;
-      }
-
-      .nav-links {
-        display: none;
-
-        position: absolute;
-        top: 68px;
-        left: 0;
-        right: 0;
-
-        background: #0a0a0a;
-        border-bottom: 1px solid var(--border);
-
-        padding: 20px;
-
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .nav-links a {
-        padding: 9px 0;
-      }
-
-      .menu-btn {
-        display: block;
-      }
-
-      .hero {
-        padding-top: 105px;
-      }
-
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-card {
-        min-height: 330px;
-      }
-
-      .features {
-        margin: 0 18px;
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .feature:nth-child(2) {
-        border-right: 0;
-      }
-
-      .feature:nth-child(3),
-      .feature:nth-child(4) {
-        border-top: 1px solid var(--border);
-      }
-
-      .service-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .products {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .gallery-item {
-        height: 300px;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 35px;
-      }
-
-      section {
-        padding: 75px 18px;
-      }
-    }
-
-    @media(max-width: 600px) {
-
-      .brand img {
-        width: 40px;
-        height: 40px;
-      }
-
-      .brand-text {
-        font-size: 13px;
-      }
-
-      .hero-logo {
-        width: 85%;
-        max-height: 200px;
-      }
-
-      .features {
-        grid-template-columns: 1fr;
-      }
-
-      .feature {
-        border-right: 0;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .feature:last-child {
-        border-bottom: 0;
-      }
-
-      .products {
-        grid-template-columns: 1fr;
-      }
-
-      .product-image {
-        height: 420px;
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .gallery-item {
-        height: 400px;
-      }
-
-      .product-actions {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07152f">
+
+<title>Thiam Création | Prêt-à-Porter & Couture</title>
+
+<meta name="description" content="Thiam Création - Prêt-à-Porter, Couture et créations sur mesure à Dakar, Sénégal.">
+
+<style>
+:root{
+  --blue:#07152f;
+  --blue2:#0d2449;
+  --white:#fff;
+  --light:#f5f7fb;
+  --gray:#7b8799;
+  --border:#e4e8ef;
+  --green:#25D366;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--light);
+  color:var(--blue);
+}
+
+button{
+  font-family:inherit;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(7,21,47,.97);
+  backdrop-filter:blur(15px);
+  color:white;
+}
+
+.nav{
+  max-width:1200px;
+  height:72px;
+  margin:auto;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+.brand-logo{
+  width:43px;
+  height:43px;
+  border:2px solid white;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:13px;
+}
+
+.brand-text strong{
+  display:block;
+  font-size:15px;
+  letter-spacing:1px;
+}
+
+.brand-text span{
+  display:block;
+  font-size:8px;
+  letter-spacing:2px;
+  opacity:.65;
+  margin-top:4px;
+}
+
+.nav-links{
+  display:flex;
+  gap:25px;
+  font-size:14px;
+}
+
+.nav-links a{
+  opacity:.8;
+  transition:.2s;
+}
+
+.nav-links a:hover{
+  opacity:1;
+}
+
+.cart-btn{
+  border:0;
+  background:white;
+  color:var(--blue);
+  padding:10px 15px;
+  border-radius:50px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.cart-count{
+  display:inline-grid;
+  place-items:center;
+  width:21px;
+  height:21px;
+  border-radius:50%;
+  background:var(--blue);
+  color:white;
+  font-size:11px;
+  margin-left:5px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  min-height:680px;
+  color:white;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(255,255,255,.1),transparent 30%),
+    radial-gradient(circle at 85% 80%,rgba(255,255,255,.08),transparent 30%),
+    linear-gradient(135deg,#040e21,#0d2853,#07152f);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:70px 20px;
+}
+
+.hero-content{
+  max-width:850px;
+}
+
+.logo{
+  width:190px;
+  height:190px;
+  margin:0 auto 30px;
+  border:2px solid rgba(255,255,255,.9);
+  border-radius:50%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  background:rgba(255,255,255,.025);
+  box-shadow:
+    0 0 0 10px rgba(255,255,255,.025),
+    0 25px 60px rgba(0,0,0,.3);
+}
+
+.logo:after{
+  content:"";
+  position:absolute;
+  inset:11px;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:50%;
+}
+
+.logo-tc{
+  position:relative;
+  font-size:40px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+.logo-name{
+  position:relative;
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:4px;
+  margin-top:6px;
+}
+
+.logo-sub{
+  position:relative;
+  font-size:8px;
+  letter-spacing:3px;
+  opacity:.7;
+  margin-top:8px;
+}
+
+.kicker{
+  font-size:11px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  opacity:.7;
+  margin-bottom:15px;
+}
+
+.hero h1{
+  font-size:clamp(42px,8vw,78px);
+  line-height:.95;
+  letter-spacing:-3px;
+  margin-bottom:22px;
+}
+
+.hero h1 span{
+  opacity:.55;
+}
+
+.hero p{
+  max-width:650px;
+  margin:auto;
+  color:rgba(255,255,255,.72);
+  line-height:1.7;
+}
+
+.hero-buttons{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.btn{
+  padding:14px 22px;
+  border-radius:50px;
+  font-weight:800;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  cursor:pointer;
+}
+
+.btn-white{
+  background:white;
+  color:var(--blue);
+}
+
+.btn-outline{
+  color:white;
+  border:1px solid rgba(255,255,255,.35);
+  background:transparent;
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+}
+
+.section-head{
+  text-align:center;
+  margin-bottom:45px;
+}
+
+.eyebrow{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  color:var(--gray);
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.section-title{
+  font-size:clamp(30px,5vw,48px);
+  letter-spacing:-1px;
+}
+
+.section-desc{
+  max-width:650px;
+  margin:15px auto 0;
+  color:var(--gray);
+  line-height:1.7;
+}
+
+/* ================= SERVICES ================= */
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.service{
+  background:white;
+  padding:30px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(7,21,47,.05);
+}
+
+.service-icon{
+  width:52px;
+  height:52px;
+  border-radius:15px;
+  background:var(--blue);
+  color:white;
+  display:grid;
+  place-items:center;
+  font-size:23px;
+  margin-bottom:20px;
+}
+
+.service h3{
+  margin-bottom:10px;
+}
+
+.service p{
+  color:var(--gray);
+  line-height:1.6;
+  font-size:14px;
+}
+
+/* ================= COLLECTION ================= */
+
+.collection{
+  background:white;
+}
+
+.products{
+  max-width:1200px;
+  margin:auto;
+  padding:0 20px 80px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.product{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(7,21,47,.07);
+  transition:.25s;
+}
+
+.product:hover{
+  transform:translateY(-5px);
+  box-shadow:0 18px 45px rgba(7,21,47,.12);
+}
+
+.product-img{
+  height:330px;
+  background:#edf1f7;
+  overflow:hidden;
+  position:relative;
+}
+
+.product-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:.4s;
+}
+
+.product:hover img{
+  transform:scale(1.04);
+}
+
+.number{
+  position:absolute;
+  top:12px;
+  left:12px;
+  background:rgba(7,21,47,.92);
+  color:white;
+  padding:6px 10px;
+  border-radius:50px;
+  font-size:10px;
+  font-weight:900;
+  z-index:2;
+}
+
+.product-info{
+  padding:18px;
+}
+
+.category{
+  color:var(--gray);
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+.product h3{
+  font-size:17px;
+  margin-bottom:9px;
+}
+
+.price{
+  font-size:16px;
+  font-weight:900;
+  color:var(--blue);
+  margin-bottom:16px;
+}
+
+.size-label{
+  display:block;
+  color:var(--gray);
+  font-size:11px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+.sizes{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:15px;
+}
+
+.size{
+  border:1px solid #d7dce5;
+  background:white;
+  color:var(--blue);
+  border-radius:8px;
+  padding:8px 10px;
+  cursor:pointer;
+  font-size:11px;
+  font-weight:800;
+}
+
+.size.selected{
+  background:var(--blue);
+  color:white;
+  border-color:var(--blue);
+}
+
+.add{
+  width:100%;
+  background:var(--blue);
+  color:white;
+  border:0;
+  padding:13px;
+  border-radius:11px;
+  cursor:pointer;
+  font-weight:900;
+}
+
+.add:hover{
+  background:var(--blue2);
+}
+
+/* ================= CTA ================= */
+
+.cta{
+  background:var(--blue);
+  color:white;
+  text-align:center;
+  padding:80px 20px;
+}
+
+.cta h2{
+  font-size:clamp(32px,6vw,55px);
+  margin-bottom:15px;
+}
+
+.cta p{
+  color:rgba(255,255,255,.68);
+  max-width:620px;
+  margin:auto;
+  line-height:1.7;
+}
+
+.cta .btn{
+  margin-top:25px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:#030b18;
+  color:white;
+  padding:50px 20px 25px;
+}
+
+.footer{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:40px;
+}
+
+.footer h3{
+  margin-bottom:15px;
+}
+
+.footer p,
+.footer a{
+  color:rgba(255,255,255,.58);
+  font-size:14px;
+  line-height:1.8;
+}
+
+.footer a:hover{
+  color:white;
+}
+
+.copyright{
+  max-width:1200px;
+  margin:35px auto 0;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.08);
+  text-align:center;
+  font-size:11px;
+  color:rgba(255,255,255,.4);
+}
+
+/* ================= WHATSAPP ================= */
+
+.whatsapp{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:59px;
+  height:59px;
+  border-radius:50%;
+  background:var(--green);
+  color:white;
+  display:grid;
+  place-items:center;
+  font-size:27px;
+  z-index:900;
+  border:3px solid white;
+  box-shadow:0 12px 35px rgba(0,0,0,.25);
+}
+
+/* ================= CART ================= */
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:1998;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+}
+
+.overlay.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.cart{
+  position:fixed;
+  top:0;
+  right:-450px;
+  width:min(450px,100%);
+  height:100%;
+  background:white;
+  z-index:1999;
+  display:flex;
+  flex-direction:column;
+  transition:.35s;
+  box-shadow:-15px 0 50px rgba(0,0,0,.2);
+}
+
+.cart.active{
+  right:0;
+}
+
+.cart-head{
+  background:var(--blue);
+  color:white;
+  padding:21px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.cart-head h2{
+  font-size:20px;
+}
+
+.close{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.3);
+  color:white;
+  background:transparent;
+  font-size:20px;
+  cursor:pointer;
+}
+
+.cart-list{
+  flex:1;
+  overflow-y:auto;
+  padding:20px;
+}
+
+.empty{
+  text-align:center;
+  color:var(--gray);
+  padding:70px 20px;
+}
+
+.cart-item{
+  display:flex;
+  gap:12px;
+  border-bottom:1px solid #e9edf3;
+  padding:14px 0;
+}
+
+.cart-img{
+  width:70px;
+  height:80px;
+  flex-shrink:0;
+  border-radius:10px;
+  overflow:hidden;
+  background:#edf1f7;
+}
+
+.cart-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.cart-details{
+  flex:1;
+}
+
+.cart-details h4{
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.cart-details p{
+  font-size:11px;
+  color:var(--gray);
+  margin-bottom:4px;
+}
+
+.remove{
+  border:0;
+  background:none;
+  color:#b42318;
+  cursor:pointer;
+  font-size:11px;
+  margin-top:6px;
+}
+
+.cart-footer{
+  border-top:1px solid var(--border);
+  padding:20px;
+}
+
+.order-info{
+  background:#f3f6fa;
+  border-radius:12px;
+  padding:12px;
+  margin-bottom:15px;
+  font-size:12px;
+  color:var(--gray);
+  line-height:1.5;
+}
+
+.checkout{
+  width:100%;
+  border:0;
+  background:var(--green);
+  color:white;
+  padding:15px;
+  border-radius:12px;
+  font-weight:900;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.clear{
+  width:100%;
+  margin-top:8px;
+  border:1px solid #d8dee8;
+  background:white;
+  color:var(--blue);
+  padding:12px;
+  border-radius:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,120px);
+  background:var(--blue);
+  color:white;
+  padding:13px 18px;
+  border-radius:50px;
+  font-size:13px;
+  font-weight:800;
+  z-index:3000;
+  opacity:0;
+  transition:.3s;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1000px){
+  .products{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:760px){
+
+  .nav{
+    height:65px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .brand-text span{
+    display:none;
+  }
+
+  .hero{
+    min-height:620px;
+  }
+
+  .logo{
+    width:160px;
+    height:160px;
+  }
+
+  .logo-tc{
+    font-size:33px;
+  }
+
+  .logo-name{
+    font-size:15px;
+  }
+
+  .services{
+    grid-template-columns:1fr;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+  .product-img{
+    height:245px;
+  }
+
+  .product-info{
+    padding:13px;
+  }
+
+  .product h3{
+    font-size:14px;
+  }
+
+  .price{
+    font-size:14px;
+  }
+
+  .size{
+    padding:7px 8px;
+  }
+
+  .footer{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+}
+
+@media(max-width:420px){
+
+  .brand-text strong{
+    font-size:12px;
+  }
+
+  .cart-btn{
+    padding:9px 11px;
+    font-size:11px;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .product-img{
+    height:215px;
+  }
+
+  .hero h1{
+    font-size:42px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================= -->
+<!-- ================= HEADER ================= -->
 
-  <header>
+<header>
 
-    <nav class="nav">
+<nav class="nav">
 
-      <a href="#accueil" class="brand">
+<a href="#accueil" class="brand">
 
-        <img
-          src="logo-thiam.png"
-          alt="Logo THIAM CRÉATION"
-        >
+<div class="brand-logo">
+TC
+</div>
 
-        <div class="brand-text">
-          THIAM <span>CRÉATION</span>
-        </div>
+<div class="brand-text">
+<strong>THIAM CRÉATION</strong>
+<span>PRÊT-À-PORTER • COUTURE</span>
+</div>
 
-      </a>
+</a>
 
-      <div class="nav-links" id="navLinks">
+<div class="nav-links">
+<a href="#accueil">Accueil</a>
+<a href="#services">Services</a>
+<a href="#collection">Collection</a>
+<a href="#contact">Contact</a>
+</div>
 
-        <a href="#accueil">Accueil</a>
-        <a href="#collection">Collection</a>
-        <a href="#couture">Couture</a>
-        <a href="#galerie">Galerie</a>
-        <a href="#apropos">À propos</a>
-        <a href="#contact">Contact</a>
+<button class="cart-btn" onclick="openCart()">
+🛒 Panier
+<span class="cart-count" id="cartCount">0</span>
+</button>
 
-        <button
-          class="cart-btn"
-          onclick="openCart()"
-        >
-          🛒 Panier
-          <span id="cartCount">0</span>
-        </button>
+</nav>
 
-      </div>
+</header>
 
-      <button
-        class="menu-btn"
-        onclick="toggleMenu()"
-        aria-label="Menu"
-      >
-        ☰
-      </button>
 
-    </nav>
+<!-- ================= ACCUEIL ================= -->
 
-  </header>
+<section class="hero" id="accueil">
 
+<div class="hero-content">
 
-  <!-- =========================
-       ACCUEIL
-  ========================= -->
+<div class="logo">
 
-  <section class="hero" id="accueil">
+<div class="logo-tc">
+TC
+</div>
 
-    <div class="hero-inner">
+<div class="logo-name">
+THIAM
+</div>
 
-      <div>
+<div class="logo-sub">
+CRÉATION
+</div>
 
-        <div class="eyebrow">
-          Couture • Confection • Sur mesure
-        </div>
+</div>
 
-        <img
-          class="hero-logo"
-          src="logo-thiam.png"
-          alt="THIAM CRÉATION"
-        >
+<div class="kicker">
+DAKAR • SÉNÉGAL
+</div>
 
-        <h1>
-          Le style.<br>
-          <span>Notre savoir-faire.</span>
-        </h1>
+<h1>
+THIAM<br>
+<span>CRÉATION</span>
+</h1>
 
-        <p>
-          THIAM CRÉATION vous accompagne dans la
-          création de tenues uniques, la confection
-          sur mesure et le prêt-à-porter à Dakar,
-          Sénégal.
-        </p>
+<p>
+Prêt-à-porter, couture et créations sur mesure.
+Des pièces pensées pour mettre en valeur votre style
+avec élégance et caractère.
+</p>
 
-        <div class="hero-buttons">
+<div class="hero-buttons">
 
-          <a
-            href="#collection"
-            class="btn btn-white"
-          >
-            DÉCOUVRIR LA COLLECTION
-          </a>
+<a href="#collection" class="btn btn-white">
+Découvrir la collection
+</a>
 
-          <a
-            href="https://wa.me/221786086090?text=Bonjour%20THIAM%20CRÉATION%20👋%20Je%20souhaite%20avoir%20des%20informations."
-            target="_blank"
-            class="btn btn-outline"
-          >
-            💬 WHATSAPP
-          </a>
+<a
+href="https://wa.me/221786086090?text=Bonjour%20Thiam%20Création%2C%20je%20souhaite%20avoir%20des%20informations."
+target="_blank"
+class="btn btn-outline">
+💬 WhatsApp
+</a>
 
-        </div>
+</div>
 
-      </div>
+</div>
 
+</section>
 
-      <div class="hero-card">
 
-        <div class="hero-card-content">
+<!-- ================= SERVICES ================= -->
 
-          <div class="scissors">
-            ✂️
-          </div>
+<section class="section" id="services">
 
-          <h2>
-            THIAM
-          </h2>
+<div class="section-head">
 
-          <p>
-            CRÉATION • DAKAR
-          </p>
+<div class="eyebrow">
+Notre savoir-faire
+</div>
 
-        </div>
+<h2 class="section-title">
+Couture & Style
+</h2>
 
-      </div>
+<p class="section-desc">
+Thiam Création vous propose des créations élégantes,
+du prêt-à-porter et de la couture sur mesure.
+</p>
 
-    </div>
+</div>
 
-  </section>
+<div class="services">
 
+<div class="service">
 
-  <!-- =========================
-       FEATURES
-  ========================= -->
+<div class="service-icon">
+🪡
+</div>
 
-  <div class="features">
+<h3>
+Couture sur mesure
+</h3>
 
-    <div class="feature">
-      <div class="feature-icon">✂️</div>
-      <h3>COUTURE SUR MESURE</h3>
-      <p>Des créations adaptées à vos mesures.</p>
-    </div>
+<p>
+Des vêtements réalisés selon vos mesures,
+vos envies et votre style.
+</p>
 
-    <div class="feature">
-      <div class="feature-icon">🪡</div>
-      <h3>CONFECTION</h3>
-      <p>Des finitions réalisées avec soin.</p>
-    </div>
+</div>
 
-    <div class="feature">
-      <div class="feature-icon">👔</div>
-      <h3>PRÊT-À-PORTER</h3>
-      <p>Des pièces modernes et élégantes.</p>
-    </div>
 
-    <div class="feature">
-      <div class="feature-icon">💬</div>
-      <h3>COMMANDE WHATSAPP</h3>
-      <p>Commande simple et rapide.</p>
-    </div>
+<div class="service">
 
-  </div>
+<div class="service-icon">
+👔
+</div>
 
+<h3>
+Prêt-à-porter
+</h3>
 
-  <!-- =========================
-       SERVICES
-  ========================= -->
+<p>
+Découvrez notre sélection de modèles et choisissez
+la taille qui vous convient.
+</p>
 
-  <section class="services" id="couture">
+</div>
 
-    <div class="container">
 
-      <div class="section-top">
+<div class="service">
 
-        <div class="eyebrow">
-          Notre savoir-faire
-        </div>
+<div class="service-icon">
+✨
+</div>
 
-        <h2 class="section-title">
-          Couture & Confection
-        </h2>
+<h3>
+Créations élégantes
+</h3>
 
-        <p class="section-description">
-          Des créations pensées pour votre style,
-          votre morphologie et vos envies.
-        </p>
+<p>
+Des modèles adaptés aux sorties, cérémonies,
+événements et occasions spéciales.
+</p>
 
-      </div>
+</div>
 
+</div>
 
-      <div class="service-grid">
+</section>
 
-        <div class="service">
 
-          <div class="service-number">
-            01
-          </div>
+<!-- ================= COLLECTION ================= -->
 
-          <h3>
-            Sur mesure
-          </h3>
+<section class="collection" id="collection">
 
-          <p>
-            Une tenue créée selon vos mesures et
-            vos préférences.
-          </p>
+<div class="section" style="padding-bottom:40px;">
 
-        </div>
+<div class="section-head">
 
+<div class="eyebrow">
+THIAM CRÉATION
+</div>
 
-        <div class="service">
+<h2 class="section-title">
+La collection
+</h2>
 
-          <div class="service-number">
-            02
-          </div>
+<p class="section-desc">
+Sélectionnez votre modèle, choisissez votre taille
+et ajoutez-le au panier. Le prix est communiqué
+sur commande.
+</p>
 
-          <h3>
-            Confection
-          </h3>
+</div>
 
-          <p>
-            Création et assemblage de vêtements
-            avec une attention particulière aux détails.
-          </p>
+</div>
 
-        </div>
 
+<div class="products">
 
-        <div class="service">
 
-          <div class="service-number">
-            03
-          </div>
+<!-- 01 -->
 
-          <h3>
-            Prêt-à-porter
-          </h3>
+<article class="product" data-name="Création Thiam 01">
 
-          <p>
-            Découvrez notre sélection de créations
-            disponibles à la commande.
-          </p>
+<div class="product-img">
 
-        </div>
+<span class="number">01</span>
 
-      </div>
+<img
+src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/047237ff-9044-4b47-818e-5411bdd8163c.jpeg"
+alt="Création Thiam 01"
+loading="lazy">
 
-    </div>
+</div>
 
-  </section>
+<div class="product-info">
 
+<div class="category">THIAM CRÉATION</div>
 
-  <!-- =========================
-       13 PRODUITS
-  ========================= -->
+<h3>Création Thiam 01</h3>
 
-  <section class="collection" id="collection">
+<div class="price">Prix : Sur commande</div>
 
-    <div class="container">
+<span class="size-label">Choisir une taille</span>
 
-      <div class="section-top">
+<div class="sizes">
+<button class="size">S</button>
+<button class="size">M</button>
+<button class="size">L</button>
+<button class="size">XL</button>
+<button class="size">XXL</button>
+</div>
 
-        <div class="eyebrow">
-          THIAM CRÉATION
-        </div>
+<button class="add">Ajouter au panier</button>
 
-        <h2 class="section-title">
-          Notre Collection
-        </h2>
+</div>
 
-        <p class="section-description">
-          Choisissez votre création, sélectionnez votre
-          taille puis ajoutez-la au panier.
-        </p>
+</article>
 
-      </div>
 
+<!-- 02 -->
 
-      <div class="products">
+<article class="product" data-name="Création Thiam 02">
 
+<div class="product-img">
+<span class="number">02</span>
 
-        <!-- PRODUIT 1 -->
+<img
+src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/0a15daa6-c5b0-4d95-850b-217edc5b9234.jpeg"
+alt="Création Thiam 02"
+loading="lazy">
+</div>
 
-        <article class="product">
+<div class="product-info">
 
-          <div
-            class="product-image"
-            onclick="openLightboxFromImage(this)"
-          >
-            <img
-              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/047237ff-9044-4b47-818e-5411bdd8163c.jpeg"
-              alt="Thiam Élégance"
-              loading="lazy"
-            >
-          </div>
+<div class="category">PRÊT-À-PORTER</div>
 
-          <div class="product-info">
+<h3>Création Thiam 02</h3>
 
-            <div class="product-number">
-              COLLECTION 01
-            </div>
+<div class="price">Prix : Sur commande</div>
 
-            <h3>Thiam Élégance</h3>
+<span class="size-label">Choisir une taille</span>
 
-            <p class="product-description">
-              Création élégante et moderne.
-            </p>
+<div class="sizes">
+<button class="size">S</button>
+<button class="size">M</button>
+<button class="size">L</button>
+<button class="size">XL</button>
+<button class="size">XXL</button>
+</div>
 
-            <div class="product-price">
-              25 000 FCFA
-            </div>
+<button class="add">Ajouter au panier</button>
 
-            <label class="size-label">
-              Choisir la taille
-            </label>
+</div>
 
-            <select class="size-select" id="size-1">
-              <option value="">Sélectionner</option>
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-              <option value="XXL">XXL</option>
-            </select>
+</article>
 
-            <div class="product-actions">
 
-              <button
-                class="add-cart"
-                onclick="addProduct(1, 'Thiam Élégance', 25000, 'size-1')"
-              >
-                🛒 AJOUTER
-              </button>
+<!-- 03 -->
 
-              <button
-                class="buy-now"
-                onclick="buyNow(1, 'Thiam Élégance', 25000, 'size-1')"
-              >
-                💬 ACHETER
-              </button>
+<article class="product" data-name="Création Thiam 03">
 
-            </div>
+<div class="product-img">
+<span class="number">03</span>
 
-          </div>
+<img
+src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/19c5dbce-1d70-48a9-bdb2-dec230108b77.jpeg"
+alt="Création Thiam 03"
+loading="lazy">
+</div>
 
-        </article>
+<div class="product-info">
 
+<div class="category">COLLECTION</div>
 
-        <!-- PRODUIT 2 -->
+<h3>Création Thiam 03</h3>
 
-        <article class="product">
+<div class="price">Prix : Sur commande</div>
 
-          <div
-            class="product-image"
-            onclick="openLightboxFromImage(this)"
-          >
-            <img
-              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/0a15daa6-c5b0-4d95-850b-217edc5b9234.jpeg"
-              alt="Thiam Premium"
-              loading="lazy"
-            >
-          </div>
+<span class="size-label">Choisir une taille</span>
 
-          <div class="product-info">
+<div class="sizes">
+<button class="size">S</button>
+<button class="size">M</button>
+<button class="size">L</button>
+<button class="size">XL</button>
+<button class="size">XXL</button>
+</div>
 
-            <div class="product-number">
-              COLLECTION 02
-            </div>
+<button class="add">Ajouter au panier</button>
 
-            <h3>Thiam Premium</h3>
+</div>
 
-            <p class="product-description">
-              Une pièce premium pour un style affirmé.
-            </p>
+</article>
 
-            <div class="product-price">
-              30 000 FCFA
-            </div>
 
-            <label class="size-label">
-              Choisir la taille
-            </label>
+<!-- 04 -->
 
-            <select class="size-select" id="size-2">
-              <option value="">Sélectionner</option>
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-            </select>
+<article class="product" data-name="Création Thiam 04">
 
-            <div class="product-actions">
+<div class="product-img">
+<span class="number">04</span>
 
-              <button
-                class="add-cart"
-                onclick="addProduct(2, 'Thiam Premium', 30000, 'size-2')"
-              >
-                🛒 AJOUTER
-              </button>
+<img
+src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/5469bc6c-1d5b-4fed-a546-46eeb5967c25.jpeg"
+alt="Création Thiam 04"
+loading="lazy">
+</div>
 
-              <button
-                class="buy-now"
-                onclick="buyNow(2, 'Thiam Premium', 30000, 'size-2')"
-              >
-                💬 ACHETER
-              </button>
+<div class="product-info">
 
-            </div>
+<div class="category">THIAM CRÉATION</div>
 
-          </div>
+<h3>Création Thiam 04</h3>
 
-        </article>
+<div class="price">Prix : Sur commande</div>
 
+<span class="size-label">Choisir une taille</span>
 
-        <!-- PRODUIT 3 -->
+<div class="sizes">
+<button class="size">S</button>
+<button class="size">M</button>
+<button class="size">L</button>
+<button class="size">XL</button>
+<button class="size">XXL</button>
+</div>
 
-        <article class="product">
+<button class="add">Ajouter au panier</button>
 
-          <div
-            class="product-image"
-            onclick="openLightboxFromImage(this)"
-          >
-            <img
-              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/19c5dbce-1d70-48a9-bdb2-dec230108b77.jpeg"
-              alt="Thiam Signature"
-              loading="lazy"
-            >
-          </div>
+</div>
 
-          <div class="product-info">
+</article>
 
-            <div class="product-number">
-              COLLECTION 03
-            </div>
 
-            <h3>Thiam Signature</h3>
+<!-- 05 -->
 
-            <p class="product-description">
-              Une création signature de la maison.
-            </p>
+<article class="product" data-name="Création Thiam 05">
 
-            <div class="product-price">
-              35 000 FCFA
-            </div>
+<div class="product-img">
+<span class="number">05</span>
 
-            <label class="size-label">
-              Choisir la taille
-            </label>
+<img
+src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/6e4399cd-0342-4591-87e7-d8e34bf8f52a.jpeg"
+alt="Création Thiam 05"
+loading="lazy">
+</div>
 
-            <select class="size-select" id="size-3">
-              <option value="">Sélectionner</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-              <option value="XXL">XXL</option>
-            </select>
+<div class="product-info">
 
-            <div class="product-actions">
+<div class="category">PRÊT-À-PORTER</div>
 
-              <button
-                class="add-cart"
-                onclick="addProduct(3, 'Thiam Signature', 35000, 'size-3')"
-              >
-                🛒 AJOUTER
-              </button>
+<h3>Création Thiam 05</h3>
 
-              <button
-                class="buy-now"
-                onclick="buyNow(3, 'Thiam Signature', 35000, 'size-3')"
-              >
-                💬 ACHETER
-              </button>
+<div class="price">Prix : Sur commande</div>
 
-            </div>
+<span class="size-label">Choisir une taille</span>
 
-          </div>
+<div class="sizes">
+<button class="size">S</button>
+<button class="size">M</button>
+<button class="size">L</button>
+<button class="size">XL</button>
+<button class="size">XXL</button>
+</div>
 
-        </article>
+<button class="add">Ajouter au panier</button>
 
+</div>
 
-        <!-- PRODUIT 4 -->
+</article>
 
-        <article class="product">
 
-          <div
-            class="product-image"
-            onclick="openLightboxFromImage(this)"
-          >
-            <img
-              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/5469bc6c-1d5b-4fed-a546-46eeb5967c25.jpeg"
-              alt="Thiam Prestige"
-              loading="lazy"
-            >
-          </div>
+<!-- 06 -->
 
-          <div class="product-info">
+<article class="product" data-name="Création Thiam 06">
 
-            <div class="product-number">
-              COLLECTION 04
-            </div>
+<div class="product-img">
+<span class="number">06</span>
 
-            <h3>Thiam Prestige</h3>
+<img
+src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/997cbf29-70c9-45c2-8269-15d75d3f945c.jpeg"
+alt="Création Thiam 06"
+loading="lazy">
+</div>
 
-            <p class="product-description">
-              Une création élégante aux finitions soignées.
-            </p>
+<div class="product-info">
 
-            <div class="product-price">
-              40 000 FCFA
-            </div>
+<div class="category">COLLECTION</div>
 
-            <label class="size-label">
-              Choisir la taille
-            </label>
+<h3>Création Thiam 06</h3>
 
-            <select class="size-select" id="size-4">
-              <option value="">Sélectionner</option>
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-              <option value="XXL">XXL</option>
-            </select>
+<div class="price">Prix : Sur commande</div>
 
-            <div class="product-actions">
+<span class="size-label">Choisir une taille</span>
 
-              <button
-                class="add-cart"
-                onclick="addProduct(4, 'Thiam Prestige', 40000, 'size-4')"
-              >
-                🛒 AJOUTER
-              </button>
+<div class="sizes">
+<button class="size">S</button>
+<button class="size">M</button>
+<button class="size">L</button>
+<button class="size">XL</button>
+<button class="size">XXL</button>
+</div>
 
-              <button
-                class="buy-now"
-                onclick="buyNow(4, 'Thiam Prestige', 40000, 'size-4')"
-              >
-                💬 ACHETER
-              </button>
+<button class="add">Ajouter au panier</button>
 
-            </div>
+</div>
 
-          </div>
+</article>
 
-        </article>
 
+<!-- 07 -->
 
-        <!-- PRODUIT 5 -->
+<article class="product" data-name="Création Thiam 07">
 
-        <article class="product">
+<div class="product-img">
+<span class="number">07</span>
 
-          <div
-            class="product-image"
-            onclick="openLightboxFromImage(this)"
-          >
-            <img
-              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/6e4399cd-0342-4591-87e7-d8e34bf8f52a.jpeg"
-              alt="Thiam Classique"
-              loading="lazy"
-            >
-          </div>
+<img
+src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/99c40e61-14fe-4686-9b35-58a49f5efa47.jpeg"
+alt="Création Thiam 07"
+loading="lazy">
+</div>
 
-          <div class="product-info">
+<div class="product-info">
 
-            <div class="product-number">
-              COLLECTION 05
-            </div>
+<div class="category">THIAM CRÉATION</div>
 
-            <h3>Thiam Classique</h3>
+<h3>Création Thiam 07</h3>
 
-            <p class="product-description">
-              Un modèle intemporel pour toutes les occasions.
-            </p>
+<div class="price">Prix : Sur commande</div>
 
-            <div class="product-price">
-              25 000 FCFA
-            </div>
+<span class="size-label">Choisir une taille</span>
 
-            <label class="size-label">
-              Choisir la taille
-            </label>
+<div class="sizes">
+<button class="size">S</button>
+<button class="size">M</button>
+<button class="size">L</button>
+<button class="size">XL</button>
+<button class="size">XXL</button>
+</div>
 
-            <select class="size-select" id="size-5">
-              <option value="">Sélectionner</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-            </select>
+<button class="add">Ajouter au panier</button>
 
-            <div class="product-actions">
+</div>
 
-              <button
-                class="add-cart"
-                onclick="addProduct(5, 'Thiam Classique', 25000, 'size-5')"
-              >
-                🛒 AJOUTER
-              </button>
+</article>
 
-              <button
-                class="buy-now"
-                onclick="buyNow(5, 'Thiam Classique', 25000, 'size-5')"
-              >
-                💬 ACHETER
-              </button>
 
-            </div>
+<!-- 08 -->
 
-          </div>
+<article class="product" data-name="Création Thiam 08">
 
-        </article>
+<div class="product-img">
+<span class="number">08</span>
 
+<img
+src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/cefaaea4-bb63-45cd-8a51-e57fc825f560.jpeg"
+alt="Création Thiam 08"
+loading="lazy">
+</div>
 
-        <!-- PRODUIT 6 -->
+<div class="product-info">
 
-        <article class="product">
+<div class="category">COLLECTION</div>
 
-          <div
-            class="product-image"
-            onclick="openLightboxFromImage(this)"
-          >
-            <img
-              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/997cbf29-70c9-45c2-8269-15d75d3f945c.jpeg"
-              alt="Thiam Royal"
-              loading="lazy"
-            >
-          </div>
+<h3>Création Thiam 08</h3>
 
-          <div class="product-info">
+<div class="price">Prix : Sur commande</div>
 
-            <div class="product-number">
-              COLLECTION 06
-            </div>
+<span class="size-label">Choisir une taille</span>
 
-            <h3>Thiam Royal</h3>
+<div class="sizes">
+<button class="size">S</button>
+<button class="size">M</button>
+<button class="size">L</button>
+<button class="size">XL</button>
+<button class="size">XXL</button>
+</div>
 
-            <p class="product-description">
-              Une pièce raffinée pour une allure distinguée.
-            </p>
+<button class="add">Ajouter au panier</button>
 
-            <div class="product-price">
-              45 000 FCFA
-            </div>
+</div>
 
-            <label class="size-label">
-              Choisir la taille
-            </label>
+</article>
 
-            <select class="size-select" id="size-6">
-              <option value="">Sélectionner</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-              <option value="XXL">XXL</option>
-            </select>
 
-            <div class="product-actions">
+<!-- 09 -->
 
-              <button
-                class="add-cart"
-                onclick="addProduct(6, 'Thiam Royal', 45000, 'size-6')"
-              >
-                🛒 AJOUTER
-              </button>
+<article class="product" data-name="Création Thiam 09">
 
-              <button
-                class="buy-now"
-                onclick="buyNow(6, 'Thiam Royal', 45000, 'size-6')"
-              >
-                💬 ACHETER
-              </button>
+<div class="product-img">
+<span class="number">09</span>
 
-            </div>
+<img
+src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/d03f482a-9a4b-48db-9ca1-d5f4bf212bb7.jpeg"
+alt="Création Thiam 09"
+loading="lazy">
+</div>
 
-          </div>
+<div class="product-info">
 
-        </article>
+<div class="category">PRÊT-À-PORTER</div>
 
+<h3>Création Thiam 09</h3>
 
-        <!-- PRODUIT 7 -->
+<div class="price">Prix : Sur commande</div>
 
-        <article class="product">
+<span class="size-label">Choisir une taille</span>
 
-          <div
-            class="product-image"
-            onclick="openLightboxFromImage(this)"
-          >
-            <img
-              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/99c40e61-14fe-4686-9b35-58a49f5efa47.jpeg"
-              alt="Thiam Collection"
-              loading="lazy"
-            >
-          </div>
+<div class="sizes">
+<button class="size">S</button>
+<button class="size">M</button>
+<button class="size">L</button>
+<button class="size">XL</button>
+<button class="size">XXL</button>
+</div>
 
-          <div class="product-info">
+<button class="add">Ajouter au panier</button>
 
-            <div class="product-number">
-              COLLECTION 07
-            </div>
+</div>
 
-            <h3>Thiam Collection</h3>
+</article>
 
-            <p class="product-description">
-              Une création moderne signée Thiam Création.
-            </p>
 
-            <div class="product-price">
-              30 000 FCFA
-            </div>
+<!-- 10 -->
 
-            <label class="size-label">
-              Choisir la taille
-            </label>
+<article class="product" data-name="Création Thiam 10">
 
-            <select class="size-select" id="size-7">
-              <option value="">Sélectionner</option>
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-            </select>
+<div class="product-img">
+<span class="number">10</span>
 
-            <div class="product-actions">
+<img
+src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/da2189a9-f552-47f8-a872-c2ca7a1f77e1.jpeg"
+alt="Création Thiam 10"
+loading="lazy">
+</div>
 
-              <button
-                class="add-cart"
-                onclick="addProduct(7, 'Thiam Collection', 30000, 'size-7')"
-              >
-                🛒 AJOUTER
-              </button>
+<div class="product-info">
 
-              <button
-                class="buy-now"
-                onclick="buyNow(7, 'Thiam Collection', 30000, 'size-7')"
-              >
-                💬 ACHETER
-              </button>
+<div class="category">THIAM CRÉATION</div>
 
-            </div>
+<h3>Création Thiam 10</h3>
 
-          </div>
+<div class="price">Prix : Sur commande</div>
 
-        </article>
+<span class="size-label">Choisir une taille</span>
 
+<div class="sizes">
+<button class="size">S</button>
+<button class="size">M</button>
+<button class="size">L</button>
+<button class="size">XL</button>
+<button class="size">XXL</button>
+</div>
 
-        <!-- PRODUIT 8 -->
+<button class="add">Ajouter au panier</button>
 
-        <article class="product">
+</div>
 
-          <div
-            class="product-image"
-            onclick="openLightboxFromImage(this)"
-          >
-            <img
-              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/cefaaea4-bb63-45cd-8a51-e57fc825f560.jpeg"
-              alt="Thiam Création"
-              loading="lazy"
-            >
-          </div>
+</article>
 
-          <div class="product-info">
 
-            <div class="product-number">
-              COLLECTION 08
-            </div>
+<!-- 11 -->
 
-            <h3>Thiam Création</h3>
+<article class="product" data-name="Création Thiam 11">
 
-            <p class="product-description">
-              Une pièce conçue avec le savoir-faire de l'atelier.
-            </p>
+<div class="product-img">
+<span class="number">11</span>
 
-            <div class="product-price">
-              35 000 FCFA
-            </div>
+<img
+src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/f1706467-d736-4ceb-ba15-12a81bdf6e2a.jpeg"
+alt="Création Thiam 11"
+loading="lazy">
+</div>
 
-            <label class="size-label">
-              Choisir la taille
-            </label>
+<div class="product-info">
 
-            <select class="size-select" id="size-8">
-              <option value="">Sélectionner</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-              <option value="XXL">XXL</option>
-            </select>
+<div class="category">COLLECTION</div>
 
-            <div class="product-actions">
+<h3>Création Thiam 11</h3>
 
-              <button
-                class="add-cart"
-                onclick="addProduct(8, 'Thiam Création', 35000, 'size-8')"
-              >
-                🛒 AJOUTER
-              </button>
+<div class="price">Prix : Sur commande</div>
 
-              <button
-                class="buy-now"
-                onclick="buyNow(8, 'Thiam Création', 35000, 'size-8')"
-              >
-                💬 ACHETER
-              </button>
+<span class="size-label">Choisir une taille</span>
 
-            </div>
+<div class="sizes">
+<button class="size">S</button>
+<button class="size">M</button>
+<button class="size">L</button>
+<button class="size">XL</button>
+<button class="size">XXL</button>
+</div>
 
-          </div>
+<button class="add">Ajouter au panier</button>
 
-        </article>
+</div>
 
+</article>
 
-        <!-- PRODUIT 9 -->
 
-        <article class="product">
+<!-- 12 -->
 
-          <div
-            class="product-image"
-            onclick="openLightboxFromImage(this)"
-          >
-            <img
-              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/d03f482a-9a4b-48db-9ca1-d5f4bf212bb7.jpeg"
-              alt="Thiam Chic"
-              loading="lazy"
-            >
-          </div>
+<article class="product" data-name="Création Thiam 12">
 
-          <div class="product-info">
+<div class="product-img">
+<span class="number">12</span>
 
-            <div class="product-number">
-              COLLECTION 09
-            </div>
+<img
+src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/fa85b4bc-2b3c-4b6c-b578-b331018be057.jpeg"
+alt="Création Thiam 12"
+loading="lazy">
+</div>
 
-            <h3>Thiam Chic</h3>
+<div class="product-info">
 
-            <p class="product-description">
-              Une silhouette chic et contemporaine.
-            </p>
+<div class="category">PRÊT-À-PORTER</div>
 
-            <div class="product-price">
-              30 000 FCFA
-            </div>
+<h3>Création Thiam 12</h3>
 
-            <label class="size-label">
-              Choisir la taille
-            </label>
+<div class="price">Prix : Sur commande</div>
 
-            <select class="size-select" id="size-9">
-              <option value="">Sélectionner</option>
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-            </select>
+<span class="size-label">Choisir une taille</span>
 
-            <div class="product-actions">
+<div class="sizes">
+<button class="size">S</button>
+<button class="size">M</button>
+<button class="size">L</button>
+<button class="size">XL</button>
+<button class="size">XXL</button>
+</div>
 
-              <button
-                class="add-cart"
-                onclick="addProduct(9, 'Thiam Chic', 30000, 'size-9')"
-              >
-                🛒 AJOUTER
-              </button>
+<button class="add">Ajouter au panier</button>
 
-              <button
-                class="buy-now"
-                onclick="buyNow(9, 'Thiam Chic', 30000, 'size-9')"
-              >
-                💬 ACHETER
-              </button>
+</div>
 
-            </div>
+</article>
 
-          </div>
 
-        </article>
+<!-- 13 -->
 
+<article class="product" data-name="Création Thiam 13">
 
-        <!-- PRODUIT 10 -->
+<div class="product-img">
+<span class="number">13</span>
 
-        <article class="product">
+<img
+src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/68b7226a-4045-47ff-bb13-f32376b385d6.jpeg"
+alt="Création Thiam 13"
+loading="lazy">
+</div>
 
-          <div
-            class="product-image"
-            onclick="openLightboxFromImage(this)"
-          >
-            <img
-              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/da2189a9-f552-47f8-a872-c2ca7a1f77e1.jpeg"
-              alt="Thiam Exclusive"
-              loading="lazy"
-            >
-          </div>
+<div class="product-info">
 
-          <div class="product-info">
+<div class="category">THIAM CRÉATION</div>
 
-            <div class="product-number">
-              COLLECTION 10
-            </div>
+<h3>Création Thiam 13</h3>
 
-            <h3>Thiam Exclusive</h3>
+<div class="price">Prix : Sur commande</div>
 
-            <p class="product-description">
-              Une création exclusive pour une allure unique.
-            </p>
+<span class="size-label">Choisir une taille</span>
 
-            <div class="product-price">
-              40 000 FCFA
-            </div>
+<div class="sizes">
+<button class="size">S</button>
+<button class="size">M</button>
+<button class="size">L</button>
+<button class="size">XL</button>
+<button class="size">XXL</button>
+</div>
 
-            <label class="size-label">
-              Choisir la taille
-            </label>
+<button class="add">Ajouter au panier</button>
 
-            <select class="size-select" id="size-10">
-              <option value="">Sélectionner</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-              <option value="XXL">XXL</option>
-            </select>
+</div>
 
-            <div class="product-actions">
+</article>
 
-              <button
-                class="add-cart"
-                onclick="addProduct(10, 'Thiam Exclusive', 40000, 'size-10')"
-              >
-                🛒 AJOUTER
-              </button>
 
-              <button
-                class="buy-now"
-                onclick="buyNow(10, 'Thiam Exclusive', 40000, 'size-10')"
-              >
-                💬 ACHETER
-              </button>
+</div>
 
-            </div>
+</section>
 
-          </div>
 
-        </article>
+<!-- ================= CTA ================= -->
 
+<section class="cta" id="contact">
 
-        <!-- PRODUIT 11 -->
+<h2>
+Une création vous plaît ?
+</h2>
 
-        <article class="product">
+<p>
+Ajoutez vos modèles au panier puis envoyez votre commande
+directement à Thiam Création sur WhatsApp.
+Le prix vous sera communiqué sur commande.
+</p>
 
-          <div
-            class="product-image"
-            onclick="openLightboxFromImage(this)"
-          >
-            <img
-              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/f1706467-d736-4ceb-ba15-12a81bdf6e2a.jpeg"
-              alt="Thiam Couture"
-              loading="lazy"
-            >
-          </div>
+<a
+href="https://wa.me/221786086090?text=Bonjour%20Thiam%20Création%2C%20je%20souhaite%20passer%20une%20commande."
+target="_blank"
+class="btn btn-white">
+💬 Commander sur WhatsApp
+</a>
 
-          <div class="product-info">
+</section>
 
-            <div class="product-number">
-              COLLECTION 11
-            </div>
 
-            <h3>Thiam Couture</h3>
+<!-- ================= FOOTER ================= -->
 
-            <p class="product-description">
-              Une création inspirée du savoir-faire couture.
-            </p>
+<footer>
 
-            <div class="product-price">
-              35 000 FCFA
-            </div>
+<div class="footer">
 
-            <label class="size-label">
-              Choisir la taille
-            </label>
+<div>
 
-            <select class="size-select" id="size-11">
-              <option value="">Sélectionner</option>
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-            </select>
+<h3>
+THIAM CRÉATION
+</h3>
 
-            <div class="product-actions">
+<p>
+Prêt-à-porter • Couture • Créations sur mesure
+</p>
 
-              <button
-                class="add-cart"
-                onclick="addProduct(11, 'Thiam Couture', 35000, 'size-11')"
-              >
-                🛒 AJOUTER
-              </button>
+<p>
+Dakar, Sénégal
+</p>
 
-              <button
-                class="buy-now"
-                onclick="buyNow(11, 'Thiam Couture', 35000, 'size-11')"
-              >
-                💬 ACHETER
-              </button>
+</div>
 
-            </div>
 
-          </div>
+<div>
 
-        </article>
+<h3>
+Navigation
+</h3>
 
+<p>
+<a href="#accueil">Accueil</a>
+</p>
 
-        <!-- PRODUIT 12 -->
+<p>
+<a href="#services">Services</a>
+</p>
 
-        <article class="product">
+<p>
+<a href="#collection">Collection</a>
+</p>
 
-          <div
-            class="product-image"
-            onclick="openLightboxFromImage(this)"
-          >
-            <img
-              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/fa85b4bc-2b3c-4b6c-b578-b331018be057.jpeg"
-              alt="Thiam Luxe"
-              loading="lazy"
-            >
-          </div>
+<p>
+<a href="#contact">Contact</a>
+</p>
 
-          <div class="product-info">
+</div>
 
-            <div class="product-number">
-              COLLECTION 12
-            </div>
 
-            <h3>Thiam Luxe</h3>
+<div>
 
-            <p class="product-description">
-              Une pièce premium aux détails raffinés.
-            </p>
+<h3>
+Contact
+</h3>
 
-            <div class="product-price">
-              45 000 FCFA
-            </div>
+<p>
+📞 +221 78 608 60 90
+</p>
 
-            <label class="size-label">
-              Choisir la taille
-            </label>
+<p>
+<a
+href="https://wa.me/221786086090"
+target="_blank">
+💬 WhatsApp
+</a>
+</p>
 
-            <select class="size-select" id="size-12">
-              <option value="">Sélectionner</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-              <option value="XXL">XXL</option>
-            </select>
+</div>
 
-            <div class="product-actions">
+</div>
 
-              <button
-                class="add-cart"
-                onclick="addProduct(12, 'Thiam Luxe', 45000, 'size-12')"
-              >
-                🛒 AJOUTER
-              </button>
 
-              <button
-                class="buy-now"
-                onclick="buyNow(12, 'Thiam Luxe', 45000, 'size-12')"
-              >
-                💬 ACHETER
-              </button>
+<div class="copyright">
+© 2026 Thiam Création — Tous droits réservés.
+</div>
 
-            </div>
+</footer>
 
-          </div>
 
-        </article>
+<!-- ================= WHATSAPP FLOAT ================= -->
 
+<a
+class="whatsapp"
+href="https://wa.me/221786086090?text=Bonjour%20Thiam%20Création%2C%20je%20souhaite%20avoir%20des%20informations."
+target="_blank"
+aria-label="WhatsApp">
+💬
+</a>
 
-        <!-- PRODUIT 13 -->
 
-        <article class="product">
+<!-- ================= OVERLAY ================= -->
 
-          <div
-            class="product-image"
-            onclick="openLightboxFromImage(this)"
-          >
-            <img
-              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/68b7226a-4045-47ff-bb13-f32376b385d6.jpeg"
-              alt="Thiam Sur Mesure"
-              loading="lazy"
-            >
-          </div>
+<div
+class="overlay"
+id="overlay"
+onclick="closeCart()">
+</div>
 
-          <div class="product-info">
 
-            <div class="product-number">
-              COLLECTION 13
-            </div>
+<!-- ================= PANIER ================= -->
 
-            <h3>Thiam Sur Mesure</h3>
+<aside class="cart" id="cart">
 
-            <p class="product-description">
-              Création personnalisée réalisée selon vos mesures.
-            </p>
+<div class="cart-head">
 
-            <div class="product-price">
-              À partir de 50 000 FCFA
-            </div>
+<h2>
+🛒 Mon panier
+</h2>
 
-            <label class="size-label">
-              Taille
-            </label>
+<button class="close" onclick="closeCart()">
+×
+</button>
 
-            <select class="size-select" id="size-13">
-              <option value="">Sélectionner</option>
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-              <option value="XXL">XXL</option>
-              <option value="Sur mesure">Sur mesure</option>
-            </select>
+</div>
 
-            <div class="product-actions">
 
-              <button
-                class="add-cart"
-                onclick="addProduct(13, 'Thiam Sur Mesure', 50000, 'size-13')"
-              >
-                🛒 AJOUTER
-              </button>
+<div class="cart-list" id="cartList">
 
-              <button
-                class="buy-now"
-                onclick="buyNow(13, 'Thiam Sur Mesure', 50000, 'size-13')"
-              >
-                💬 ACHETER
-              </button>
+<div class="empty">
+Votre panier est vide.
+<br><br>
+Ajoutez un modèle pour commencer.
+</div>
 
-            </div>
+</div>
 
-          </div>
 
-        </article>
+<div class="cart-footer">
 
+<div class="order-info">
+💙 <strong>Prix sur commande</strong><br>
+Le montant sera confirmé directement avec
+Thiam Création sur WhatsApp.
+</div>
 
-      </div>
+<button class="checkout" onclick="sendWhatsApp()">
+💬 Commander sur WhatsApp
+</button>
 
-    </div>
+<button class="clear" onclick="clearCart()">
+Vider le panier
+</button>
 
-  </section>
+</div>
 
+</aside>
 
-  <!-- =========================
-       GALERIE
-  ========================= -->
 
-  <section class="gallery" id="galerie">
+<!-- ================= TOAST ================= -->
 
-    <div class="container">
+<div class="toast" id="toast">
+Produit ajouté au panier ✓
+</div>
 
-      <div class="section-top">
 
-        <div class="eyebrow">
-          Nos créations
-        </div>
+<script>
 
-        <h2 class="section-title">
-          Galerie
-        </h2>
+/* ================= VARIABLES ================= */
 
-        <p class="section-description">
-          Découvrez l'univers de THIAM CRÉATION.
-        </p>
+const whatsappNumber = "221786086090";
 
-      </div>
+let cart = [];
 
 
-      <div class="gallery-grid">
+/* ================= TAILLES ================= */
 
-        <div
-          class="gallery-item"
-          onclick="openLightboxFromImage(this)"
-        >
-          <img
-            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/047237ff-9044-4b47-818e-5411bdd8163c.jpeg"
-            alt="THIAM CRÉATION"
-            loading="lazy"
-          >
-          <div class="gallery-label">CRÉATION 01</div>
-        </div>
+document.querySelectorAll(".product").forEach(product => {
 
-        <div
-          class="gallery-item"
-          onclick="openLightboxFromImage(this)"
-        >
-          <img
-            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/0a15daa6-c5b0-4d95-850b-217edc5b9234.jpeg"
-            alt="THIAM CRÉATION"
-            loading="lazy"
-          >
-          <div class="gallery-label">CRÉATION 02</div>
-        </div>
+  const sizes = product.querySelectorAll(".size");
 
-        <div
-          class="gallery-item"
-          onclick="openLightboxFromImage(this)"
-        >
-          <img
-            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/19c5dbce-1d70-48a9-bdb2-dec230108b77.jpeg"
-            alt="THIAM CRÉATION"
-            loading="lazy"
-          >
-          <div class="gallery-label">CRÉATION 03</div>
-        </div>
+  sizes.forEach(size => {
 
-        <div
-          class="gallery-item"
-          onclick="openLightboxFromImage(this)"
-        >
-          <img
-            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/5469bc6c-1d5b-4fed-a546-46eeb5967c25.jpeg"
-            alt="THIAM CRÉATION"
-            loading="lazy"
-          >
-          <div class="gallery-label">CRÉATION 04</div>
-        </div>
+    size.addEventListener("click", () => {
 
-        <div
-          class="gallery-item"
-          onclick="openLightboxFromImage(this)"
-        >
-          <img
-            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/6e4399cd-0342-4591-87e7-d8e34bf8f52a.jpeg"
-            alt="THIAM CRÉATION"
-            loading="lazy"
-          >
-          <div class="gallery-label">CRÉATION 05</div>
-        </div>
-
-        <div
-          class="gallery-item"
-          onclick="openLightboxFromImage(this)"
-        >
-          <img
-            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/997cbf29-70c9-45c2-8269-15d75d3f945c.jpeg"
-            alt="THIAM CRÉATION"
-            loading="lazy"
-          >
-          <div class="gallery-label">CRÉATION 06</div>
-        </div>
-
-        <div
-          class="gallery-item"
-          onclick="openLightboxFromImage(this)"
-        >
-          <img
-            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/99c40e61-14fe-4686-9b35-58a49f5efa47.jpeg"
-            alt="THIAM CRÉATION"
-            loading="lazy"
-          >
-          <div class="gallery-label">CRÉATION 07</div>
-        </div>
-
-        <div
-          class="gallery-item"
-          onclick="openLightboxFromImage(this)"
-        >
-          <img
-            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/cefaaea4-bb63-45cd-8a51-e57fc825f560.jpeg"
-            alt="THIAM CRÉATION"
-            loading="lazy"
-          >
-          <div class="gallery-label">CRÉATION 08</div>
-        </div>
-
-        <div
-          class="gallery-item"
-          onclick="openLightboxFromImage(this)"
-        >
-          <img
-            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/d03f482a-9a4b-48db-9ca1-d5f4bf212bb7.jpeg"
-            alt="THIAM CRÉATION"
-            loading="lazy"
-          >
-          <div class="gallery-label">CRÉATION 09</div>
-        </div>
-
-        <div
-          class="gallery-item"
-          onclick="openLightboxFromImage(this)"
-        >
-          <img
-            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/da2189a9-f552-47f8-a872-c2ca7a1f77e1.jpeg"
-            alt="THIAM CRÉATION"
-            loading="lazy"
-          >
-          <div class="gallery-label">CRÉATION 10</div>
-        </div>
-
-        <div
-          class="gallery-item"
-          onclick="openLightboxFromImage(this)"
-        >
-          <img
-            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/f1706467-d736-4ceb-ba15-12a81bdf6e2a.jpeg"
-            alt="THIAM CRÉATION"
-            loading="lazy"
-          >
-          <div class="gallery-label">CRÉATION 11</div>
-        </div>
-
-        <div
-          class="gallery-item"
-          onclick="openLightboxFromImage(this)"
-        >
-          <img
-            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/fa85b4bc-2b3c-4b6c-b578-b331018be057.jpeg"
-            alt="THIAM CRÉATION"
-            loading="lazy"
-          >
-          <div class="gallery-label">CRÉATION 12</div>
-        </div>
-
-        <div
-          class="gallery-item"
-          onclick="openLightboxFromImage(this)"
-        >
-          <img
-            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/68b7226a-4045-47ff-bb13-f32376b385d6.jpeg"
-            alt="THIAM CRÉATION"
-            loading="lazy"
-          >
-          <div class="gallery-label">CRÉATION 13</div>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       VIDEO
-  ========================= -->
-
-  <section class="video-section">
-
-    <div class="container">
-
-      <div class="section-top">
-
-        <div class="eyebrow">
-          L'atelier
-        </div>
-
-        <h2 class="section-title">
-          THIAM en mouvement
-        </h2>
-
-      </div>
-
-      <div class="video-box">
-
-        <video
-          controls
-          playsinline
-          preload="metadata"
-        >
-
-          <source
-            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/c357aba0-8238-4227-9954-064e9af822e4.mov"
-            type="video/quicktime"
-          >
-
-          Votre navigateur ne peut pas lire cette vidéo.
-
-        </video>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       À PROPOS
-  ========================= -->
-
-  <section class="about" id="apropos">
-
-    <div class="container">
-
-      <div class="about-grid">
-
-        <div class="about-box">
-
-          <div>
-
-            <div class="icon">
-              🪡
-            </div>
-
-            <h3>
-              THIAM CRÉATION
-            </h3>
-
-            <p style="color:#777;margin-top:10px;">
-              Dakar • Sénégal
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="about-text">
-
-          <div class="eyebrow">
-            La maison
-          </div>
-
-          <h2>
-            Votre style.<br>
-            Notre création.
-          </h2>
-
-          <p>
-            THIAM CRÉATION est spécialisé dans la
-            couture, la confection et le prêt-à-porter.
-          </p>
-
-          <p>
-            Chaque création est pensée pour proposer
-            une pièce élégante, moderne et adaptée
-            à votre personnalité.
-          </p>
-
-          <p>
-            Pour une création personnalisée ou une
-            demande de sur-mesure, contactez-nous
-            directement sur WhatsApp.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       CONTACT
-  ========================= -->
-
-  <section class="contact" id="contact">
-
-    <div class="container">
-
-      <div class="contact-card">
-
-        <div class="eyebrow">
-          Dakar • Sénégal
-        </div>
-
-        <h2>
-          Parlons de votre tenue.
-        </h2>
-
-        <p>
-          Une question ? Une commande ?
-          Une création sur mesure ?
-        </p>
-
-        <a
-          class="whatsapp"
-          href="https://wa.me/221786086090?text=Bonjour%20THIAM%20CRÉATION%20👋%20Je%20souhaite%20passer%20une%20commande."
-          target="_blank"
-        >
-          💬 COMMANDER SUR WHATSAPP
-        </a>
-
-        <div class="phone">
-          +221 78 608 60 90
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       FOOTER
-  ========================= -->
-
-  <footer>
-
-    <div class="footer-inner">
-
-      <p>
-        © 2026 THIAM CRÉATION
-      </p>
-
-      <p>
-        Couture • Confection • Prêt-à-Porter
-      </p>
-
-      <p>
-        Dakar, Sénégal • +221 78 608 60 90
-      </p>
-
-    </div>
-
-  </footer>
-
-
-  <!-- =========================
-       LIGHTBOX
-  ========================= -->
-
-  <div
-    class="lightbox"
-    id="lightbox"
-    onclick="closeLightbox()"
-  >
-
-    <button
-      class="close-lightbox"
-      onclick="closeLightbox()"
-    >
-      ×
-    </button>
-
-    <img
-      id="lightboxImage"
-      src=""
-      alt="THIAM CRÉATION"
-    >
-
-  </div>
-
-
-  <!-- =========================
-       PANIER
-  ========================= -->
-
-  <div
-    class="overlay"
-    id="overlay"
-    onclick="closeCart()"
-  ></div>
-
-
-  <aside
-    class="cart"
-    id="cart"
-  >
-
-    <div class="cart-head">
-
-      <h2>
-        🛒 Mon panier
-      </h2>
-
-      <button
-        class="close-cart"
-        onclick="closeCart()"
-      >
-        ×
-      </button>
-
-    </div>
-
-
-    <div
-      class="cart-items"
-      id="cartItems"
-    >
-
-      <div class="empty-cart">
-        Votre panier est vide.
-      </div>
-
-    </div>
-
-
-    <div class="cart-bottom">
-
-      <div class="total-line">
-
-        <span>
-          Total
-        </span>
-
-        <span id="cartTotal">
-          0 FCFA
-        </span>
-
-      </div>
-
-      <button
-        class="checkout"
-        onclick="checkoutWhatsApp()"
-      >
-        💬 COMMANDER SUR WHATSAPP
-      </button>
-
-    </div>
-
-  </aside>
-
-
-  <!-- =========================
-       TOAST
-  ========================= -->
-
-  <div
-    class="toast"
-    id="toast"
-  >
-    Produit ajouté au panier ✓
-  </div>
-
-
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
-
-  <script>
-
-    /* ==========================================
-       CONFIGURATION
-    ========================================== */
-
-    const WHATSAPP_NUMBER = "221786086090";
-
-    let cart = [];
-
-
-    /* ==========================================
-       MENU MOBILE
-    ========================================== */
-
-    function toggleMenu() {
-
-      document
-        .getElementById("navLinks")
-        .classList.toggle("active");
-
-    }
-
-
-    document
-      .querySelectorAll(".nav-links a")
-      .forEach(link => {
-
-        link.addEventListener("click", () => {
-
-          document
-            .getElementById("navLinks")
-            .classList.remove("active");
-
-        });
-
+      sizes.forEach(s => {
+        s.classList.remove("selected");
       });
 
-
-    /* ==========================================
-       TOAST
-    ========================================== */
-
-    function showToast(message) {
-
-      const toast =
-        document.getElementById("toast");
-
-      toast.textContent = message;
-
-      toast.classList.add("show");
-
-      setTimeout(() => {
-
-        toast.classList.remove("show");
-
-      }, 2200);
-
-    }
-
-
-    /* ==========================================
-       PANIER
-    ========================================== */
-
-    function addProduct(id, name, price, sizeId) {
-
-      const size =
-        document.getElementById(sizeId).value;
-
-      if (!size) {
-
-        alert("Veuillez sélectionner une taille.");
-
-        return;
-
-      }
-
-
-      const existing =
-        cart.find(
-          item =>
-            item.id === id &&
-            item.size === size
-        );
-
-
-      if (existing) {
-
-        existing.quantity += 1;
-
-      } else {
-
-        cart.push({
-
-          id: id,
-          name: name,
-          price: price,
-          size: size,
-          quantity: 1
-
-        });
-
-      }
-
-
-      updateCart();
-
-      showToast("✓ " + name + " ajouté au panier");
-
-    }
-
-
-    function removeProduct(index) {
-
-      cart.splice(index, 1);
-
-      updateCart();
-
-    }
-
-
-    function changeQuantity(index, amount) {
-
-      cart[index].quantity += amount;
-
-
-      if (cart[index].quantity <= 0) {
-
-        cart.splice(index, 1);
-
-      }
-
-
-      updateCart();
-
-    }
-
-
-    function updateCart() {
-
-      const cartItems =
-        document.getElementById("cartItems");
-
-      const cartCount =
-        document.getElementById("cartCount");
-
-      const cartTotal =
-        document.getElementById("cartTotal");
-
-
-      let totalQuantity = 0;
-      let totalPrice = 0;
-
-
-      cart.forEach(item => {
-
-        totalQuantity += item.quantity;
-
-        totalPrice +=
-          item.price * item.quantity;
-
-      });
-
-
-      cartCount.textContent =
-        totalQuantity;
-
-
-      cartTotal.textContent =
-        totalPrice.toLocaleString("fr-FR") +
-        " FCFA";
-
-
-      if (cart.length === 0) {
-
-        cartItems.innerHTML = `
-
-          <div class="empty-cart">
-
-            🛍️
-
-            <br><br>
-
-            Votre panier est vide.
-
-            <br><br>
-
-            Ajoutez une création pour commencer.
-
-          </div>
-
-        `;
-
-        return;
-
-      }
-
-
-      cartItems.innerHTML =
-        cart.map((item, index) => `
-
-          <div class="cart-item">
-
-            <div class="cart-item-top">
-
-              <div>
-
-                <div class="cart-item-name">
-                  ${item.name}
-                </div>
-
-                <div class="cart-item-size">
-                  Taille : ${item.size}
-                </div>
-
-              </div>
-
-              <div class="cart-item-price">
-                ${(item.price * item.quantity)
-                  .toLocaleString("fr-FR")} FCFA
-              </div>
-
-            </div>
-
-
-            <div class="cart-item-bottom">
-
-              <div class="quantity">
-
-                <button
-                  onclick="changeQuantity(${index}, -1)"
-                >
-                  −
-                </button>
-
-                <span>
-                  ${item.quantity}
-                </span>
-
-                <button
-                  onclick="changeQuantity(${index}, 1)"
-                >
-                  +
-                </button>
-
-              </div>
-
-
-              <button
-                class="remove-item"
-                onclick="removeProduct(${index})"
-              >
-                Supprimer
-              </button>
-
-            </div>
-
-          </div>
-
-        `).join("");
-
-    }
-
-
-    function openCart() {
-
-      document
-        .getElementById("cart")
-        .classList.add("active");
-
-      document
-        .getElementById("overlay")
-        .classList.add("active");
-
-    }
-
-
-    function closeCart() {
-
-      document
-        .getElementById("cart")
-        .classList.remove("active");
-
-      document
-        .getElementById("overlay")
-        .classList.remove("active");
-
-    }
-
-
-    /* ==========================================
-       ACHAT DIRECT
-    ========================================== */
-
-    function buyNow(id, name, price, sizeId) {
-
-      const size =
-        document.getElementById(sizeId).value;
-
-      if (!size) {
-
-        alert("Veuillez sélectionner une taille.");
-
-        return;
-
-      }
-
-
-      let message =
-        "Bonjour THIAM CRÉATION 👋\n\n" +
-
-        "Je souhaite commander :\n\n" +
-
-        "👕 Produit : " +
-        name +
-
-        "\n📏 Taille : " +
-        size +
-
-        "\n💰 Prix : " +
-        price.toLocaleString("fr-FR") +
-        " FCFA\n\n" +
-
-        "Merci de me confirmer la disponibilité.";
-
-
-      openWhatsApp(message);
-
-    }
-
-
-    /* ==========================================
-       COMMANDE PANIER WHATSAPP
-    ========================================== */
-
-    function checkoutWhatsApp() {
-
-      if (cart.length === 0) {
-
-        alert("Votre panier est vide.");
-
-        return;
-
-      }
-
-
-      let message =
-        "Bonjour THIAM CRÉATION 👋\n\n" +
-
-        "🛍️ JE SOUHAITE PASSER CETTE COMMANDE :\n";
-
-
-      let total = 0;
-
-
-      cart.forEach((item, index) => {
-
-        const subtotal =
-          item.price * item.quantity;
-
-        total += subtotal;
-
-
-        message +=
-
-          "\n" +
-
-          "━━━━━━━━━━━━━━\n" +
-
-          "👕 " +
-          item.name +
-
-          "\n📏 Taille : " +
-          item.size +
-
-          "\n🔢 Quantité : " +
-          item.quantity +
-
-          "\n💰 " +
-          subtotal.toLocaleString("fr-FR") +
-          " FCFA";
-
-      });
-
-
-      message +=
-
-        "\n\n━━━━━━━━━━━━━━\n" +
-
-        "💵 TOTAL : " +
-        total.toLocaleString("fr-FR") +
-        " FCFA\n\n" +
-
-        "📍 Je suis à Dakar / Sénégal.\n" +
-
-        "Merci de me confirmer la disponibilité et les modalités de commande.";
-
-
-      openWhatsApp(message);
-
-    }
-
-
-    function openWhatsApp(message) {
-
-      const url =
-        "https://wa.me/" +
-        WHATSAPP_NUMBER +
-        "?text=" +
-        encodeURIComponent(message);
-
-
-      window.open(url, "_blank");
-
-    }
-
-
-    /* ==========================================
-       LIGHTBOX
-    ========================================== */
-
-    function openLightboxFromImage(element) {
-
-      const image =
-        element.querySelector("img");
-
-
-      document
-        .getElementById("lightboxImage")
-        .src = image.src;
-
-
-      document
-        .getElementById("lightbox")
-        .classList.add("active");
-
-    }
-
-
-    function closeLightbox() {
-
-      document
-        .getElementById("lightbox")
-        .classList.remove("active");
-
-    }
-
-
-    document.addEventListener("keydown", event => {
-
-      if (event.key === "Escape") {
-
-        closeLightbox();
-
-        closeCart();
-
-      }
+      size.classList.add("selected");
 
     });
 
+  });
 
-    /* ==========================================
-       INITIALISATION
-    ========================================== */
+});
+
+
+/* ================= AJOUT PANIER ================= */
+
+document.querySelectorAll(".add").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    const product = button.closest(".product");
+
+    const name = product.dataset.name;
+
+    const selected = product.querySelector(".size.selected");
+
+    if(!selected){
+
+      showToast("Choisissez une taille d'abord");
+
+      return;
+    }
+
+    const size = selected.textContent;
+
+    const image = product.querySelector("img").src;
+
+    cart.push({
+
+      id: Date.now(),
+
+      name: name,
+
+      size: size,
+
+      image: image
+
+    });
 
     updateCart();
 
-  </script>
+    showToast("Produit ajouté au panier ✓");
+
+    openCart();
+
+  });
+
+});
+
+
+/* ================= UPDATE PANIER ================= */
+
+function updateCart(){
+
+  const count = document.getElementById("cartCount");
+
+  count.textContent = cart.length;
+
+  const list = document.getElementById("cartList");
+
+  if(cart.length === 0){
+
+    list.innerHTML = `
+      <div class="empty">
+        Votre panier est vide.
+        <br><br>
+        Ajoutez un modèle pour commencer.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  list.innerHTML = "";
+
+  cart.forEach((item,index) => {
+
+    const div = document.createElement("div");
+
+    div.className = "cart-item";
+
+    div.innerHTML = `
+
+      <div class="cart-img">
+        <img src="${item.image}" alt="${item.name}">
+      </div>
+
+      <div class="cart-details">
+
+        <h4>${item.name}</h4>
+
+        <p>
+          Taille : <strong>${item.size}</strong>
+        </p>
+
+        <p>
+          Prix : <strong>Sur commande</strong>
+        </p>
+
+        <button
+          class="remove"
+          onclick="removeItem(${index})">
+          Supprimer
+        </button>
+
+      </div>
+    `;
+
+    list.appendChild(div);
+
+  });
+
+}
+
+
+/* ================= SUPPRIMER ================= */
+
+function removeItem(index){
+
+  cart.splice(index,1);
+
+  updateCart();
+
+}
+
+
+/* ================= VIDER ================= */
+
+function clearCart(){
+
+  cart = [];
+
+  updateCart();
+
+}
+
+
+/* ================= OUVRIR PANIER ================= */
+
+function openCart(){
+
+  document.getElementById("cart").classList.add("active");
+
+  document.getElementById("overlay").classList.add("active");
+
+}
+
+
+/* ================= FERMER PANIER ================= */
+
+function closeCart(){
+
+  document.getElementById("cart").classList.remove("active");
+
+  document.getElementById("overlay").classList.remove("active");
+
+}
+
+
+/* ================= WHATSAPP ================= */
+
+function sendWhatsApp(){
+
+  if(cart.length === 0){
+
+    showToast("Votre panier est vide");
+
+    return;
+  }
+
+
+  let message =
+    "Bonjour Thiam Création 👋🏽%0A%0A" +
+    "Je souhaite passer une commande :%0A%0A";
+
+
+  cart.forEach((item,index) => {
+
+    message +=
+      "🛍️ Article " + (index + 1) + "%0A" +
+      "Modèle : " + item.name + "%0A" +
+      "Taille : " + item.size + "%0A" +
+      "Prix : Sur commande%0A%0A";
+
+  });
+
+
+  message +=
+    "Merci de me communiquer le prix et les disponibilités. 🙏🏽";
+
+
+  const url =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    message;
+
+
+  window.open(url,"_blank");
+
+}
+
+
+/* ================= TOAST ================= */
+
+function showToast(text){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.textContent = text;
+
+  toast.classList.add("show");
+
+  setTimeout(() => {
+
+    toast.classList.remove("show");
+
+  },2200);
+
+}
+
+
+/* ================= ESC ================= */
+
+document.addEventListener("keydown",(e)=>{
+
+  if(e.key === "Escape"){
+
+    closeCart();
+
+  }
+
+});
+
+</script>
 
 </body>
 </html>
