@@ -4,19 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#07152f">
-
 <title>Thiam Création | Couture & Prêt-à-Porter</title>
-
-<meta name="description"
-content="Thiam Création — Couture, prêt-à-porter et créations sur mesure à Dakar, Sénégal.">
+<meta name="description" content="Thiam Création — Couture, prêt-à-porter et créations sur mesure à Dakar, Sénégal.">
 
 <style>
-
 :root{
   --navy:#07152f;
   --navy2:#0d2449;
-  --blue:#173d70;
-  --white:#ffffff;
+  --white:#fff;
   --light:#f5f7fa;
   --gray:#7c8798;
   --line:#e1e6ed;
@@ -24,15 +19,9 @@ content="Thiam Création — Couture, prêt-à-porter et créations sur mesure �
   --dark:#030914;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
   font-family:Arial,Helvetica,sans-serif;
@@ -40,19 +29,8 @@ body{
   color:var(--navy);
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button{
-  font-family:inherit;
-}
-
-
-/* =====================================================
-   HEADER
-===================================================== */
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
 
 header{
   position:sticky;
@@ -69,7 +47,6 @@ header{
   height:74px;
   margin:auto;
   padding:0 22px;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -85,13 +62,10 @@ header{
 .brand-mark{
   width:44px;
   height:44px;
-
   border:1px solid rgba(255,255,255,.6);
   border-radius:50%;
-
   display:grid;
   place-items:center;
-
   font-weight:900;
   font-size:13px;
   letter-spacing:1px;
@@ -122,18 +96,14 @@ header{
   transition:.2s;
 }
 
-.nav-links a:hover{
-  color:white;
-}
+.nav-links a:hover{color:white}
 
 .cart-button{
   border:0;
   background:white;
   color:var(--navy);
-
   padding:10px 15px;
   border-radius:50px;
-
   font-weight:900;
   cursor:pointer;
 }
@@ -141,224 +111,129 @@ header{
 .cart-count{
   display:inline-grid;
   place-items:center;
-
   width:22px;
   height:22px;
-
   margin-left:5px;
-
   border-radius:50%;
   background:var(--navy);
   color:white;
-
   font-size:10px;
 }
 
-
-/* =====================================================
-   HERO
-===================================================== */
+/* ACCUEIL */
 
 .hero{
-  min-height:780px;
-
+  min-height:800px;
   display:flex;
   align-items:center;
   justify-content:center;
-
   text-align:center;
-
   color:white;
-
-  padding:60px 20px 85px;
-
+  padding:55px 20px 90px;
   position:relative;
   overflow:hidden;
 
   background:
-    radial-gradient(
-      circle at 50% 20%,
-      rgba(255,255,255,.09),
-      transparent 34%
-    ),
-    linear-gradient(
-      145deg,
-      #020711 0%,
-      #07152f 55%,
-      #0d2449 100%
-    );
-}
-
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent 49.8%,
-      rgba(255,255,255,.025) 50%,
-      transparent 50.2%
-    );
-
-  pointer-events:none;
+    radial-gradient(circle at 50% 20%,rgba(255,255,255,.09),transparent 35%),
+    linear-gradient(145deg,#020711 0%,#07152f 55%,#0d2449 100%);
 }
 
 .hero-content{
   width:100%;
-  max-width:1000px;
+  max-width:1050px;
   position:relative;
   z-index:2;
 }
 
-
-/* LOGO TRANSPARENT */
+/* GRAND LOGO */
 
 .hero-logo{
   display:block;
-
-  width:min(430px,78vw);
-
-  max-height:290px;
-
+  width:min(700px,95vw);
+  height:auto;
+  max-height:500px;
   object-fit:contain;
+  margin:0 auto 22px;
 
-  margin:0 auto 28px;
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
 
-  background:transparent;
-
-  border:0;
-
-  /*
-    Le logo est chargé directement depuis GitHub.
-  */
-
-  mix-blend-mode:screen;
-
-  filter:
-    brightness(1.12)
-    contrast(1.05)
-    drop-shadow(0 18px 30px rgba(0,0,0,.28));
+  filter:drop-shadow(0 15px 30px rgba(0,0,0,.25));
 }
-
 
 .hero-label{
   display:inline-block;
-
   font-size:10px;
   font-weight:900;
-
   letter-spacing:4px;
-
   color:#aebbd0;
-
   margin-bottom:17px;
 }
 
-
 .hero h1{
   font-size:clamp(43px,7vw,76px);
-
   line-height:.95;
-
   letter-spacing:-3px;
-
   margin-bottom:20px;
 }
 
-.hero h1 span{
-  color:#a9b5c7;
-}
-
+.hero h1 span{color:#a9b5c7}
 
 .hero-description{
   max-width:690px;
-
   margin:auto;
-
   color:#c8d0dc;
-
   line-height:1.8;
-
   font-size:16px;
 }
 
-
 .hero-location{
   margin-top:14px;
-
   color:#96a4b8;
-
   font-size:12px;
-
   letter-spacing:1px;
 }
 
-
 .hero-buttons{
   display:flex;
-
   justify-content:center;
-
   flex-wrap:wrap;
-
   gap:12px;
-
   margin-top:30px;
 }
 
-
 .btn{
   display:inline-flex;
-
   align-items:center;
   justify-content:center;
-
   min-height:49px;
-
   padding:0 23px;
-
   border-radius:50px;
-
   font-size:13px;
-
   font-weight:900;
-
   transition:.25s;
 }
-
 
 .btn-primary{
   background:white;
   color:var(--navy);
 }
 
-.btn-primary:hover{
-  transform:translateY(-2px);
-}
-
+.btn-primary:hover{transform:translateY(-2px)}
 
 .btn-outline{
   border:1px solid rgba(255,255,255,.35);
-
   color:white;
-
   background:rgba(255,255,255,.03);
 }
 
-.btn-outline:hover{
-  background:rgba(255,255,255,.1);
-}
+.btn-outline:hover{background:rgba(255,255,255,.1)}
 
-
-/* =====================================================
-   INTRO
-===================================================== */
+/* SECTIONS */
 
 .intro{
   background:white;
-
   padding:85px 20px;
 }
 
@@ -369,52 +244,36 @@ header{
 
 .section-label{
   text-transform:uppercase;
-
   letter-spacing:3px;
-
   color:#8793a5;
-
   font-size:10px;
-
   font-weight:900;
-
   margin-bottom:12px;
 }
 
 .section-title{
   font-size:clamp(32px,5vw,53px);
-
   line-height:1.02;
-
   letter-spacing:-2px;
 }
 
 .section-text{
   max-width:700px;
-
   color:var(--gray);
-
   line-height:1.8;
-
   margin-top:16px;
-
   font-size:15px;
 }
 
-
-/* =====================================================
-   UNIVERS
-===================================================== */
+/* UNIVERS */
 
 .univers{
   padding:85px 20px;
-
   background:var(--light);
 }
 
 .center-title{
   text-align:center;
-
   margin-bottom:48px;
 }
 
@@ -423,883 +282,546 @@ header{
   margin-right:auto;
 }
 
-
 .univers-grid{
   display:grid;
-
-  grid-template-columns:
-  repeat(4,1fr);
-
+  grid-template-columns:repeat(4,1fr);
   gap:17px;
 }
 
-
 .univers-card{
   background:white;
-
   border:1px solid var(--line);
-
   border-radius:20px;
-
   padding:28px;
-
   min-height:190px;
-
-  box-shadow:
-    0 12px 35px rgba(7,21,47,.05);
-
+  box-shadow:0 12px 35px rgba(7,21,47,.05);
   transition:.25s;
 }
 
 .univers-card:hover{
   transform:translateY(-5px);
-
-  box-shadow:
-    0 18px 45px rgba(7,21,47,.09);
+  box-shadow:0 18px 45px rgba(7,21,47,.09);
 }
-
 
 .card-number{
   color:#9ba7b7;
-
   font-size:10px;
-
   font-weight:900;
-
   letter-spacing:2px;
-
   margin-bottom:30px;
 }
 
-
 .univers-card h3{
   font-size:19px;
-
   margin-bottom:10px;
 }
 
-
 .univers-card p{
   color:var(--gray);
-
   line-height:1.6;
-
   font-size:13px;
 }
 
-
-/* =====================================================
-   SAVOIR FAIRE
-===================================================== */
+/* SAVOIR-FAIRE */
 
 .savoir{
   background:var(--navy);
-
   color:white;
-
   padding:90px 20px;
 }
 
 .savoir-grid{
   display:grid;
-
-  grid-template-columns:
-  1fr 1.4fr;
-
+  grid-template-columns:1fr 1.4fr;
   gap:70px;
-
   align-items:center;
 }
 
-.savoir .section-label{
-  color:#93a2b8;
-}
-
-.savoir .section-text{
-  color:#aeb9c9;
-}
-
+.savoir .section-label{color:#93a2b8}
+.savoir .section-text{color:#aeb9c9}
 
 .features{
   display:grid;
-
   grid-template-columns:1fr 1fr;
-
   gap:13px;
 }
 
 .feature{
   padding:22px;
-
-  border:
-  1px solid rgba(255,255,255,.1);
-
+  border:1px solid rgba(255,255,255,.1);
   border-radius:17px;
-
-  background:
-  rgba(255,255,255,.035);
+  background:rgba(255,255,255,.035);
 }
 
 .feature-icon{
   font-size:24px;
-
   margin-bottom:13px;
 }
 
 .feature h3{
   font-size:15px;
-
   margin-bottom:7px;
 }
 
 .feature p{
   color:#9ca9bb;
-
   font-size:12px;
-
   line-height:1.6;
 }
 
-
-/* =====================================================
-   COLLECTION
-===================================================== */
+/* COLLECTION */
 
 .collection{
   background:white;
-
   padding:90px 20px;
 }
 
 .collection-head{
   max-width:1200px;
-
   margin:auto;
-
   margin-bottom:45px;
 }
 
-
 .products{
   max-width:1200px;
-
   margin:auto;
-
   display:grid;
-
-  grid-template-columns:
-  repeat(4,1fr);
-
+  grid-template-columns:repeat(4,1fr);
   gap:20px;
 }
 
-
 .product{
   background:white;
-
-  border:
-  1px solid var(--line);
-
+  border:1px solid var(--line);
   border-radius:20px;
-
   overflow:hidden;
-
-  box-shadow:
-  0 10px 30px rgba(7,21,47,.06);
-
+  box-shadow:0 10px 30px rgba(7,21,47,.06);
   transition:.25s;
 }
 
-.product:hover{
-  transform:translateY(-5px);
-}
-
+.product:hover{transform:translateY(-5px)}
 
 .product-image{
   height:330px;
-
   background:#edf1f6;
-
   position:relative;
-
   overflow:hidden;
 }
 
 .product-image img{
   width:100%;
   height:100%;
-
   object-fit:cover;
-
   display:block;
-
   transition:.4s;
 }
 
-.product:hover
-.product-image img{
+.product:hover .product-image img{
   transform:scale(1.045);
 }
 
-
 .product-number{
   position:absolute;
-
   top:12px;
   left:12px;
-
   z-index:2;
-
   background:rgba(7,21,47,.93);
-
   color:white;
-
   padding:6px 10px;
-
   border-radius:50px;
-
   font-size:9px;
-
   font-weight:900;
 }
 
-
-.product-info{
-  padding:18px;
-}
-
+.product-info{padding:18px}
 
 .product-category{
   color:#8793a5;
-
   font-size:9px;
-
   letter-spacing:2px;
-
   font-weight:900;
-
   margin-bottom:8px;
 }
 
-
 .product-info h3{
   font-size:16px;
-
   margin-bottom:10px;
 }
 
-
 .product-price{
   font-size:13px;
-
   font-weight:900;
-
   margin-bottom:16px;
 }
 
-
 .size-title{
   display:block;
-
   color:#8793a5;
-
   font-size:10px;
-
   font-weight:900;
-
   margin-bottom:7px;
 }
 
-
 .sizes{
   display:flex;
-
   flex-wrap:wrap;
-
   gap:6px;
-
   margin-bottom:15px;
 }
 
-
 .size{
-  border:
-  1px solid #d6dce5;
-
+  border:1px solid #d6dce5;
   background:white;
-
   color:var(--navy);
-
   border-radius:8px;
-
   padding:7px 10px;
-
   font-size:10px;
-
   font-weight:900;
-
   cursor:pointer;
 }
-
 
 .size.selected{
   background:var(--navy);
-
   color:white;
-
   border-color:var(--navy);
 }
 
-
 .add-cart{
   width:100%;
-
   border:0;
-
   background:var(--navy);
-
   color:white;
-
   border-radius:11px;
-
   padding:13px;
-
   font-size:12px;
-
   font-weight:900;
-
   cursor:pointer;
 }
 
-
-/* =====================================================
-   STORY
-===================================================== */
+/* STORY */
 
 .story{
   background:var(--light);
-
   padding:90px 20px;
 }
 
 .story-grid{
   max-width:1200px;
-
   margin:auto;
-
   display:grid;
-
-  grid-template-columns:
-  1fr 1fr;
-
+  grid-template-columns:1fr 1fr;
   gap:70px;
-
   align-items:center;
 }
 
-
 .story-box{
   background:white;
-
   border-radius:25px;
-
   border:1px solid var(--line);
-
   padding:42px;
-
-  box-shadow:
-  0 15px 40px rgba(7,21,47,.06);
+  box-shadow:0 15px 40px rgba(7,21,47,.06);
 }
-
 
 .story-list{
   margin-top:25px;
-
   display:grid;
-
   gap:13px;
 }
 
-
 .story-item{
   display:flex;
-
   gap:11px;
-
   color:#667386;
-
   font-size:13px;
-
   line-height:1.6;
 }
 
-.story-item strong{
-  color:var(--navy);
-}
+.story-item strong{color:var(--navy)}
 
-
-/* =====================================================
-   CONTACT / CTA
-===================================================== */
+/* CONTACT */
 
 .contact{
   background:var(--navy);
-
   color:white;
-
   text-align:center;
-
   padding:95px 20px;
 }
 
 .contact h2{
   font-size:clamp(34px,6vw,58px);
-
   letter-spacing:-2px;
-
   margin-bottom:16px;
 }
 
 .contact p{
   max-width:650px;
-
   margin:auto;
-
   color:#b2bdcd;
-
   line-height:1.8;
-
   font-size:14px;
 }
 
-.contact .btn{
-  margin-top:28px;
-}
+.contact .btn{margin-top:28px}
 
-
-/* =====================================================
-   FOOTER
-===================================================== */
+/* FOOTER */
 
 footer{
   background:#020811;
-
   color:white;
-
   padding:55px 20px 25px;
 }
 
 .footer-grid{
   max-width:1200px;
-
   margin:auto;
-
   display:grid;
-
-  grid-template-columns:
-  2fr 1fr 1fr;
-
+  grid-template-columns:2fr 1fr 1fr;
   gap:45px;
 }
 
-.footer h3{
-  margin-bottom:14px;
-}
+.footer h3{margin-bottom:14px}
 
-.footer p,
-.footer a{
+.footer p,.footer a{
   color:#8996a9;
-
   font-size:13px;
-
   line-height:1.9;
 }
 
-.footer a:hover{
-  color:white;
-}
+.footer a:hover{color:white}
 
 .footer-bottom{
   max-width:1200px;
-
   margin:35px auto 0;
-
   padding-top:20px;
-
-  border-top:
-  1px solid rgba(255,255,255,.08);
-
+  border-top:1px solid rgba(255,255,255,.08);
   text-align:center;
-
   color:#5e6b7d;
-
   font-size:10px;
 }
 
-
-/* =====================================================
-   WHATSAPP
-===================================================== */
+/* WHATSAPP */
 
 .whatsapp{
   position:fixed;
-
   right:18px;
   bottom:18px;
-
   width:59px;
   height:59px;
-
   border-radius:50%;
-
   background:var(--green);
-
   color:white;
-
   display:grid;
-
   place-items:center;
-
   font-size:25px;
-
   z-index:900;
-
   border:3px solid white;
-
-  box-shadow:
-  0 12px 35px rgba(0,0,0,.25);
+  box-shadow:0 12px 35px rgba(0,0,0,.25);
 }
 
-
-/* =====================================================
-   PANIER
-===================================================== */
+/* PANIER */
 
 .overlay{
   position:fixed;
-
   inset:0;
-
   background:rgba(0,0,0,.55);
-
   z-index:1998;
-
   opacity:0;
-
   pointer-events:none;
-
   transition:.3s;
 }
 
 .overlay.active{
   opacity:1;
-
   pointer-events:auto;
 }
 
-
 .cart{
   position:fixed;
-
   top:0;
-
   right:-450px;
-
   width:min(450px,100%);
-
   height:100%;
-
   background:white;
-
   z-index:1999;
-
   display:flex;
-
   flex-direction:column;
-
   transition:.35s;
 }
 
-.cart.active{
-  right:0;
-}
-
+.cart.active{right:0}
 
 .cart-header{
   padding:20px;
-
   background:var(--navy);
-
   color:white;
-
   display:flex;
-
   justify-content:space-between;
-
   align-items:center;
 }
 
 .cart-close{
   width:38px;
   height:38px;
-
-  border:
-  1px solid rgba(255,255,255,.3);
-
+  border:1px solid rgba(255,255,255,.3);
   border-radius:50%;
-
   background:transparent;
-
   color:white;
-
   font-size:20px;
-
   cursor:pointer;
 }
 
-
 .cart-items{
   flex:1;
-
   overflow-y:auto;
-
   padding:20px;
 }
 
-
 .empty-cart{
   text-align:center;
-
   color:#7c8798;
-
   padding:70px 20px;
 }
 
-
 .cart-item{
   display:flex;
-
   gap:12px;
-
   padding:14px 0;
-
-  border-bottom:
-  1px solid #e8edf3;
+  border-bottom:1px solid #e8edf3;
 }
-
 
 .cart-item-image{
   width:70px;
   height:80px;
-
   border-radius:10px;
-
   overflow:hidden;
-
   background:#edf1f6;
-
   flex-shrink:0;
 }
 
 .cart-item-image img{
   width:100%;
   height:100%;
-
   object-fit:cover;
 }
 
-
-.cart-item-info{
-  flex:1;
-}
+.cart-item-info{flex:1}
 
 .cart-item-info h4{
   font-size:14px;
-
   margin-bottom:6px;
 }
 
 .cart-item-info p{
   color:#7c8798;
-
   font-size:11px;
-
   margin-bottom:5px;
 }
 
 .remove{
   border:0;
-
   background:none;
-
   color:#b42318;
-
   font-size:11px;
-
   cursor:pointer;
 }
-
 
 .cart-bottom{
   padding:20px;
-
-  border-top:
-  1px solid var(--line);
+  border-top:1px solid var(--line);
 }
-
 
 .cart-note{
   background:#f3f6fa;
-
   color:#7c8798;
-
   border-radius:12px;
-
   padding:12px;
-
   font-size:11px;
-
   line-height:1.5;
-
   margin-bottom:12px;
 }
 
-
 .checkout{
   width:100%;
-
   border:0;
-
   background:var(--green);
-
   color:white;
-
   padding:14px;
-
   border-radius:12px;
-
   font-weight:900;
-
   cursor:pointer;
 }
-
 
 .clear-cart{
   width:100%;
-
   margin-top:8px;
-
-  border:
-  1px solid #d8dee7;
-
+  border:1px solid #d8dee7;
   background:white;
-
   color:var(--navy);
-
   padding:12px;
-
   border-radius:12px;
-
   font-weight:900;
-
   cursor:pointer;
 }
 
-
-/* =====================================================
-   TOAST
-===================================================== */
-
 .toast{
   position:fixed;
-
   left:50%;
   bottom:25px;
-
-  transform:
-  translate(-50%,120px);
-
+  transform:translate(-50%,120px);
   opacity:0;
-
   background:var(--navy);
-
   color:white;
-
   padding:13px 18px;
-
   border-radius:50px;
-
   font-size:12px;
-
   font-weight:900;
-
   z-index:3000;
-
   transition:.3s;
 }
 
 .toast.show{
   opacity:1;
-
-  transform:
-  translate(-50%,0);
+  transform:translate(-50%,0);
 }
 
-
-/* =====================================================
-   MOBILE
-===================================================== */
+/* MOBILE */
 
 @media(max-width:1000px){
 
   .univers-grid{
-    grid-template-columns:
-    repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
   }
 
   .products{
-    grid-template-columns:
-    repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
   }
-
 }
-
 
 @media(max-width:760px){
 
-  .nav{
-    height:66px;
-  }
+  .nav{height:66px}
 
-  .nav-links{
-    display:none;
-  }
+  .nav-links{display:none}
 
-  .brand-text small{
-    display:none;
-  }
+  .brand-text small{display:none}
 
   .hero{
-    min-height:750px;
-
-    padding-top:45px;
+    min-height:760px;
+    padding-top:40px;
   }
 
   .hero-logo{
-    width:min(390px,88vw);
-
-    max-height:260px;
+    width:94vw;
+    max-height:400px;
+    margin-bottom:15px;
   }
 
   .hero h1{
     font-size:45px;
-
     letter-spacing:-2px;
   }
 
-  .hero-description{
-    font-size:14px;
-  }
+  .hero-description{font-size:14px}
 
   .univers-grid{
     grid-template-columns:1fr;
@@ -1307,7 +829,6 @@ footer{
 
   .savoir-grid{
     grid-template-columns:1fr;
-
     gap:40px;
   }
 
@@ -1316,66 +837,48 @@ footer{
   }
 
   .products{
-    grid-template-columns:
-    repeat(2,1fr);
-
+    grid-template-columns:repeat(2,1fr);
     gap:12px;
   }
 
-  .product-image{
-    height:240px;
-  }
+  .product-image{height:240px}
 
   .story-grid{
     grid-template-columns:1fr;
-
     gap:30px;
   }
 
-  .story-box{
-    padding:28px;
-  }
+  .story-box{padding:28px}
 
   .footer-grid{
     grid-template-columns:1fr;
-
     gap:28px;
   }
-
 }
-
 
 @media(max-width:430px){
 
-  .brand-text strong{
-    font-size:12px;
-  }
+  .brand-text strong{font-size:12px}
 
   .cart-button{
     padding:9px 11px;
-
     font-size:10px;
   }
 
   .hero-logo{
-    width:90vw;
-
-    max-height:235px;
+    width:96vw;
+    max-height:330px;
   }
 
-  .hero h1{
-    font-size:39px;
-  }
+  .hero h1{font-size:39px}
 
   .hero-buttons{
     flex-direction:column;
-
     align-items:center;
   }
 
   .btn{
     width:100%;
-
     max-width:300px;
   }
 
@@ -1383,107 +886,46 @@ footer{
     grid-template-columns:1fr;
   }
 
-  .product-image{
-    height:210px;
-  }
-
+  .product-image{height:210px}
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
 <header>
-
 <nav class="nav">
 
 <a href="#accueil" class="brand">
-
-<div class="brand-mark">
-TC
-</div>
+<div class="brand-mark">TC</div>
 
 <div class="brand-text">
-
-<strong>
-THIAM CRÉATION
-</strong>
-
-<small>
-COUTURE • CONFECTION • SUR MESURE
-</small>
-
+<strong>THIAM CRÉATION</strong>
+<small>COUTURE • CONFECTION • SUR MESURE</small>
 </div>
-
 </a>
-
 
 <div class="nav-links">
-
-<a href="#accueil">
-Accueil
-</a>
-
-<a href="#univers">
-Notre univers
-</a>
-
-<a href="#collection">
-Créations
-</a>
-
-<a href="#savoir-faire">
-Savoir-faire
-</a>
-
-<a href="#contact">
-Contact
-</a>
-
+<a href="#accueil">Accueil</a>
+<a href="#univers">Notre univers</a>
+<a href="#collection">Créations</a>
+<a href="#savoir-faire">Savoir-faire</a>
+<a href="#contact">Contact</a>
 </div>
 
-
-<button
-class="cart-button"
-onclick="openCart()"
->
-
+<button class="cart-button" onclick="openCart()">
 🛒 Panier
-
-<span
-class="cart-count"
-id="cartCount"
->
-0
-</span>
-
+<span class="cart-count" id="cartCount">0</span>
 </button>
 
 </nav>
-
 </header>
 
+<!-- ACCUEIL -->
 
-<!-- =====================================================
-     ACCUEIL
-===================================================== -->
-
-<section
-class="hero"
-id="accueil"
->
+<section class="hero" id="accueil">
 
 <div class="hero-content">
-
-
-<!-- LOGO DIRECTEMENT DEPUIS GITHUB -->
 
 <img
 class="hero-logo"
@@ -1491,47 +933,31 @@ src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/lo
 alt="Logo Thiam Création"
 >
 
-
 <div class="hero-label">
 ✦ THIAM CRÉATION · DAKAR
 </div>
 
-
 <h1>
-
 L'élégance
-
-<span>
-cousue avec passion.
-</span>
-
+<span>cousue avec passion.</span>
 </h1>
 
-
 <p class="hero-description">
-
 Découvrez l'univers de Thiam Création :
 des créations de couture, du prêt-à-porter
 et des pièces réalisées avec soin pour révéler
 votre style et votre personnalité.
-
 </p>
-
 
 <div class="hero-location">
 📍 Dakar, Sénégal
 </div>
 
-
 <div class="hero-buttons">
 
-<a
-href="#collection"
-class="btn btn-primary"
->
+<a href="#collection" class="btn btn-primary">
 Découvrir les créations
 </a>
-
 
 <a
 href="https://wa.me/221786086090?text=Bonjour%20Thiam%20Création%2C%20je%20souhaite%20avoir%20des%20informations."
@@ -1544,468 +970,247 @@ class="btn btn-outline"
 </div>
 
 </div>
-
 </section>
 
-
-<!-- =====================================================
-     INTRODUCTION
-===================================================== -->
+<!-- IDENTITÉ -->
 
 <section class="intro">
 
 <div class="container">
 
-<div class="section-label">
-NOTRE IDENTITÉ
-</div>
-
+<div class="section-label">NOTRE IDENTITÉ</div>
 
 <h2 class="section-title">
-Une signature.
-<br>
+Une signature.<br>
 Un savoir-faire.
 </h2>
 
-
 <p class="section-text">
-
 Thiam Création imagine et confectionne des vêtements
 qui associent élégance, caractère et savoir-faire.
 Notre objectif est de proposer des créations qui vous
 ressemblent, pour les grandes occasions comme pour
 votre quotidien.
-
 </p>
 
 </div>
-
 </section>
 
+<!-- UNIVERS -->
 
-<!-- =====================================================
-     UNIVERS
-===================================================== -->
-
-<section
-class="univers"
-id="univers"
->
+<section class="univers" id="univers">
 
 <div class="container">
 
-
 <div class="center-title">
 
-<div class="section-label">
-NOTRE UNIVERS
-</div>
-
+<div class="section-label">NOTRE UNIVERS</div>
 
 <h2 class="section-title">
-Des créations pour
-<br>
+Des créations pour<br>
 exprimer votre style.
 </h2>
 
-
 <p class="section-text">
-
 Explorez l'univers Thiam Création et découvrez
 nos différentes spécialités.
-
 </p>
 
 </div>
-
 
 <div class="univers-grid">
 
+<div class="univers-card">
+<div class="card-number">01</div>
+<h3>Couture</h3>
+<p>Des pièces confectionnées avec attention, selon vos envies et votre style.</p>
+</div>
 
 <div class="univers-card">
-
-<div class="card-number">
-01
+<div class="card-number">02</div>
+<h3>Prêt-à-porter</h3>
+<p>Des modèles élégants et modernes, disponibles dans plusieurs tailles.</p>
 </div>
-
-<h3>
-Couture
-</h3>
-
-<p>
-Des pièces confectionnées avec attention,
-selon vos envies et votre style.
-</p>
-
-</div>
-
 
 <div class="univers-card">
-
-<div class="card-number">
-02
+<div class="card-number">03</div>
+<h3>Sur mesure</h3>
+<p>Une création adaptée à vos mesures pour une tenue qui vous correspond.</p>
 </div>
-
-<h3>
-Prêt-à-porter
-</h3>
-
-<p>
-Des modèles élégants et modernes,
-disponibles dans plusieurs tailles.
-</p>
-
-</div>
-
 
 <div class="univers-card">
-
-<div class="card-number">
-03
-</div>
-
-<h3>
-Sur mesure
-</h3>
-
-<p>
-Une création adaptée à vos mesures
-pour une tenue qui vous correspond.
-</p>
-
-</div>
-
-
-<div class="univers-card">
-
-<div class="card-number">
-04
-</div>
-
-<h3>
-Cérémonies
-</h3>
-
-<p>
-Des tenues pensées pour vos mariages,
-fêtes et événements importants.
-</p>
-
-</div>
-
-
+<div class="card-number">04</div>
+<h3>Cérémonies</h3>
+<p>Des tenues pensées pour vos mariages, fêtes et événements importants.</p>
 </div>
 
 </div>
-
+</div>
 </section>
 
+<!-- SAVOIR-FAIRE -->
 
-<!-- =====================================================
-     SAVOIR FAIRE
-===================================================== -->
-
-<section
-class="savoir"
-id="savoir-faire"
->
+<section class="savoir" id="savoir-faire">
 
 <div class="container">
 
 <div class="savoir-grid">
 
-
 <div>
 
-<div class="section-label">
-NOTRE SAVOIR-FAIRE
-</div>
-
+<div class="section-label">NOTRE SAVOIR-FAIRE</div>
 
 <h2 class="section-title">
-Le détail fait
+Le détail fait<br>
 la différence.
 </h2>
 
-
 <p class="section-text">
-
 Chaque création est pensée pour offrir
 une coupe élégante et un style unique.
-
 </p>
 
 </div>
-
 
 <div class="features">
 
+<div class="feature">
+<div class="feature-icon">🪡</div>
+<h3>Couture soignée</h3>
+<p>Un travail réalisé avec attention dans chaque détail.</p>
+</div>
 
 <div class="feature">
-
-<div class="feature-icon">
-🪡
+<div class="feature-icon">📐</div>
+<h3>Sur mesure</h3>
+<p>Des créations adaptées à vos mesures et à vos envies.</p>
 </div>
-
-<h3>
-Couture soignée
-</h3>
-
-<p>
-Un travail réalisé avec attention
-dans chaque détail.
-</p>
-
-</div>
-
 
 <div class="feature">
-
-<div class="feature-icon">
-📐
+<div class="feature-icon">✨</div>
+<h3>Style élégant</h3>
+<p>Des modèles pensés pour mettre votre personnalité en valeur.</p>
 </div>
-
-<h3>
-Sur mesure
-</h3>
-
-<p>
-Des créations adaptées à vos mesures
-et à vos envies.
-</p>
-
-</div>
-
 
 <div class="feature">
-
-<div class="feature-icon">
-✨
-</div>
-
-<h3>
-Style élégant
-</h3>
-
-<p>
-Des modèles pensés pour mettre
-votre personnalité en valeur.
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-💬
-</div>
-
-<h3>
-Commande facile
-</h3>
-
-<p>
-Commandez simplement directement
-sur WhatsApp.
-</p>
-
-</div>
-
-
+<div class="feature-icon">💬</div>
+<h3>Commande facile</h3>
+<p>Commandez simplement directement sur WhatsApp.</p>
 </div>
 
 </div>
-
 </div>
-
+</div>
 </section>
 
+<!-- COLLECTION -->
 
-<!-- =====================================================
-     COLLECTION
-===================================================== -->
-
-<section
-class="collection"
-id="collection"
->
+<section class="collection" id="collection">
 
 <div class="collection-head">
 
-<div class="section-label">
-THIAM CRÉATION
-</div>
-
+<div class="section-label">THIAM CRÉATION</div>
 
 <h2 class="section-title">
 Nos créations.
 </h2>
 
-
 <p class="section-text">
-
-Découvrez nos modèles.
-Choisissez votre taille et ajoutez vos créations
+Découvrez nos modèles. Choisissez votre taille et ajoutez vos créations
 préférées au panier.
-
 <br>
-
-<strong>
-Prix sur commande.
-</strong>
-
+<strong>Prix sur commande.</strong>
 </p>
 
 </div>
 
-
-<div
-class="products"
-id="products"
-></div>
+<div class="products" id="products"></div>
 
 </section>
 
-
-<!-- =====================================================
-     STORY
-===================================================== -->
+<!-- HISTOIRE -->
 
 <section class="story">
 
 <div class="story-grid">
 
-
 <div>
 
-<div class="section-label">
-THIAM CRÉATION
-</div>
-
+<div class="section-label">THIAM CRÉATION</div>
 
 <h2 class="section-title">
-Votre style mérite
-quelque chose d'unique.
+Votre style mérite quelque chose d'unique.
 </h2>
 
-
 <p class="section-text">
-
 Thiam Création met son savoir-faire au service
 de vos envies afin de créer des vêtements
 qui correspondent à votre personnalité.
-
 </p>
-
 
 <div class="story-list">
 
+<div class="story-item">
+<span>✦</span>
+<span><strong>Créativité</strong> — des modèles pensés avec caractère.</span>
+</div>
 
 <div class="story-item">
 <span>✦</span>
-<span>
-<strong>Créativité</strong> —
-des modèles pensés avec caractère.
-</span>
+<span><strong>Qualité</strong> — une attention portée aux finitions.</span>
 </div>
-
 
 <div class="story-item">
 <span>✦</span>
-<span>
-<strong>Qualité</strong> —
-une attention portée aux finitions.
-</span>
+<span><strong>Écoute</strong> — vos envies au centre de chaque création.</span>
 </div>
-
 
 <div class="story-item">
 <span>✦</span>
-<span>
-<strong>Écoute</strong> —
-vos envies au centre de chaque création.
-</span>
-</div>
-
-
-<div class="story-item">
-<span>✦</span>
-<span>
-<strong>Commande</strong> —
-un contact rapide par WhatsApp.
-</span>
-</div>
-
-
+<span><strong>Commande</strong> — un contact rapide par WhatsApp.</span>
 </div>
 
 </div>
-
+</div>
 
 <div class="story-box">
 
-<div class="section-label">
-Dakar · Sénégal
-</div>
+<div class="section-label">DAKAR · SÉNÉGAL</div>
 
-
-<h2>
-Créons votre prochaine tenue.
-</h2>
-
+<h2>Créons votre prochaine tenue.</h2>
 
 <p class="section-text">
-
 Une idée, un modèle ou une demande particulière ?
 Contactez Thiam Création directement.
-
 </p>
-
 
 <a
 href="https://wa.me/221786086090?text=Bonjour%20Thiam%20Création%2C%20je%20souhaite%20discuter%20d%27une%20création."
 target="_blank"
 class="btn"
-style="
-background:#07152f;
-color:white;
-margin-top:25px;
-"
+style="background:#07152f;color:white;margin-top:25px;"
 >
 💬 Nous contacter
 </a>
 
 </div>
 
-
 </div>
-
 </section>
 
+<!-- CONTACT -->
 
-<!-- =====================================================
-     CONTACT
-===================================================== -->
-
-<section
-class="contact"
-id="contact"
->
+<section class="contact" id="contact">
 
 <h2>
-Prêt à créer
+Prêt à créer<br>
 votre style ?
 </h2>
 
-
 <p>
-
 Une question, une commande ou une création sur mesure ?
 Écrivez directement à Thiam Création.
-
 </p>
-
 
 <a
 href="https://wa.me/221786086090?text=Bonjour%20Thiam%20Création%2C%20je%20souhaite%20passer%20une%20commande."
@@ -2017,103 +1222,45 @@ class="btn btn-primary"
 
 </section>
 
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+<!-- FOOTER -->
 
 <footer>
 
 <div class="footer-grid">
 
-
 <div>
-
-<h3>
-THIAM CRÉATION
-</h3>
-
-<p>
-Couture · Prêt-à-porter · Créations sur mesure
-</p>
-
-<p>
-📍 Dakar, Sénégal
-</p>
-
+<h3>THIAM CRÉATION</h3>
+<p>Couture · Prêt-à-porter · Créations sur mesure</p>
+<p>📍 Dakar, Sénégal</p>
 </div>
 
-
 <div>
-
-<h3>
-Navigation
-</h3>
-
-<p>
-<a href="#accueil">
-Accueil
-</a>
-</p>
-
-<p>
-<a href="#univers">
-Notre univers
-</a>
-</p>
-
-<p>
-<a href="#collection">
-Créations
-</a>
-</p>
-
-<p>
-<a href="#savoir-faire">
-Savoir-faire
-</a>
-</p>
-
+<h3>Navigation</h3>
+<p><a href="#accueil">Accueil</a></p>
+<p><a href="#univers">Notre univers</a></p>
+<p><a href="#collection">Créations</a></p>
+<p><a href="#savoir-faire">Savoir-faire</a></p>
 </div>
 
-
 <div>
-
-<h3>
-Contact
-</h3>
-
+<h3>Contact</h3>
+<p>📞 +221 78 608 60 90</p>
 <p>
-📞 +221 78 608 60 90
-</p>
-
-<p>
-<a
-href="https://wa.me/221786086090"
-target="_blank"
->
+<a href="https://wa.me/221786086090" target="_blank">
 💬 WhatsApp
 </a>
 </p>
-
 </div>
 
-
 </div>
-
 
 <div class="footer-bottom">
-
 © 2026 Thiam Création — Tous droits réservés.
-
 </div>
 
 </footer>
 
-
-<!-- =====================================================
-     WHATSAPP FLOTTANT
-===================================================== -->
+<!-- WHATSAPP -->
 
 <a
 class="whatsapp"
@@ -2124,110 +1271,55 @@ aria-label="WhatsApp"
 💬
 </a>
 
+<!-- OVERLAY -->
 
-<!-- =====================================================
-     OVERLAY PANIER
-===================================================== -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
 
-<div
-class="overlay"
-id="overlay"
-onclick="closeCart()"
-></div>
+<!-- PANIER -->
 
-
-<!-- =====================================================
-     PANIER
-===================================================== -->
-
-<aside
-class="cart"
-id="cart"
->
+<aside class="cart" id="cart">
 
 <div class="cart-header">
 
-<h2>
-🛒 Mon panier
-</h2>
+<h2>🛒 Mon panier</h2>
 
-
-<button
-class="cart-close"
-onclick="closeCart()"
->
-×
-</button>
+<button class="cart-close" onclick="closeCart()">×</button>
 
 </div>
 
-
-<div
-class="cart-items"
-id="cartItems"
->
+<div class="cart-items" id="cartItems">
 
 <div class="empty-cart">
-
 Votre panier est vide.
-
 <br><br>
-
 Ajoutez une création pour commencer.
-
 </div>
 
 </div>
-
 
 <div class="cart-bottom">
 
-
 <div class="cart-note">
-
 💙 <strong>Prix sur commande</strong>
-
 <br>
-
-Le prix et la disponibilité seront confirmés
-directement avec Thiam Création sur WhatsApp.
-
+Le prix et la disponibilité seront confirmés directement
+avec Thiam Création sur WhatsApp.
 </div>
 
-
-<button
-class="checkout"
-onclick="sendWhatsApp()"
->
+<button class="checkout" onclick="sendWhatsApp()">
 💬 Commander sur WhatsApp
 </button>
 
-
-<button
-class="clear-cart"
-onclick="clearCart()"
->
+<button class="clear-cart" onclick="clearCart()">
 Vider le panier
 </button>
 
-
 </div>
-
 </aside>
 
-
-<div
-class="toast"
-id="toast"
-></div>
-
+<div class="toast" id="toast"></div>
 
 <script>
-
-
-/* =====================================================
-   PRODUITS
-===================================================== */
 
 const products = [
 
@@ -2311,26 +1403,16 @@ category:"COUTURE"
 
 ];
 
-
 const RAW =
 "https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/";
-
-
-/* =====================================================
-   AFFICHER PRODUITS
-===================================================== */
 
 const productsContainer =
 document.getElementById("products");
 
-
 productsContainer.innerHTML =
 products.map((product,index)=>`
 
-<article
-class="product"
-data-name="${product.name}"
->
+<article class="product" data-name="${product.name}">
 
 <div class="product-image">
 
@@ -2338,15 +1420,14 @@ data-name="${product.name}"
 ${String(index+1).padStart(2,"0")}
 </span>
 
-
 <img
 src="${RAW}${product.image}"
 alt="${product.name}"
 loading="lazy"
+onerror="this.style.display='none'"
 >
 
 </div>
-
 
 <div class="product-info">
 
@@ -2354,42 +1435,25 @@ loading="lazy"
 ${product.category}
 </div>
 
-
-<h3>
-${product.name}
-</h3>
-
+<h3>${product.name}</h3>
 
 <div class="product-price">
 Prix : Sur commande
 </div>
 
-
 <span class="size-title">
 Choisir une taille
 </span>
 
-
 <div class="sizes">
 
 ${["S","M","L","XL","XXL"].map(size=>`
-
-<button
-class="size"
-type="button"
->
-${size}
-</button>
-
+<button class="size" type="button">${size}</button>
 `).join("")}
 
 </div>
 
-
-<button
-class="add-cart"
-type="button"
->
+<button class="add-cart" type="button">
 Ajouter au panier
 </button>
 
@@ -2399,176 +1463,102 @@ Ajouter au panier
 
 `).join("");
 
-
-/* =====================================================
-   PANIER
-===================================================== */
-
 let cart=[];
 
+const whatsappNumber="221786086090";
 
-const whatsappNumber =
-"221786086090";
+document.querySelectorAll(".product").forEach(product=>{
 
-
-document
-.querySelectorAll(".product")
-.forEach(product=>{
-
-
-const sizes =
-product.querySelectorAll(".size");
-
+const sizes=product.querySelectorAll(".size");
 
 sizes.forEach(size=>{
 
-size.addEventListener(
-"click",
-()=>{
+size.addEventListener("click",()=>{
 
-sizes.forEach(
-s=>s.classList.remove("selected")
-);
+sizes.forEach(s=>s.classList.remove("selected"));
 
 size.classList.add("selected");
 
-}
-);
+});
 
 });
 
+product.querySelector(".add-cart").addEventListener("click",()=>{
 
-product
-.querySelector(".add-cart")
-.addEventListener(
-"click",
-()=>{
-
-
-const selected =
-product.querySelector(
-".size.selected"
-);
-
+const selected=product.querySelector(".size.selected");
 
 if(!selected){
 
-showToast(
-"Choisissez une taille"
-);
+showToast("Choisissez une taille");
 
 return;
 
 }
 
-
 cart.push({
 
-name:
-product.dataset.name,
+name:product.dataset.name,
 
-size:
-selected.textContent.trim(),
+size:selected.textContent.trim(),
 
-image:
-product.querySelector("img").src
+image:product.querySelector("img").src
 
 });
-
 
 updateCart();
 
-showToast(
-"Création ajoutée au panier ✓"
-);
+showToast("Création ajoutée au panier ✓");
 
 openCart();
 
-}
-);
+});
 
 });
 
-
-/* =====================================================
-   UPDATE PANIER
-===================================================== */
-
 function updateCart(){
 
-document
-.getElementById("cartCount")
-.textContent =
-cart.length;
+document.getElementById("cartCount").textContent=cart.length;
 
-
-const container =
-document.getElementById("cartItems");
-
+const container=document.getElementById("cartItems");
 
 if(!cart.length){
 
 container.innerHTML=`
 
 <div class="empty-cart">
-
 Votre panier est vide.
-
 <br><br>
-
 Ajoutez une création pour commencer.
-
 </div>
 
 `;
 
 return;
-
 }
 
-
-container.innerHTML =
-cart.map(
-(item,index)=>`
+container.innerHTML=cart.map((item,index)=>`
 
 <div class="cart-item">
 
-
 <div class="cart-item-image">
-
-<img
-src="${item.image}"
-alt="${item.name}"
->
-
+<img src="${item.image}" alt="${item.name}">
 </div>
-
 
 <div class="cart-item-info">
 
-<h4>
-${item.name}
-</h4>
+<h4>${item.name}</h4>
 
 <p>
 Taille :
-<strong>
-${item.size}
-</strong>
+<strong>${item.size}</strong>
 </p>
 
 <p>
 Prix :
-<strong>
-Sur commande
-</strong>
+<strong>Sur commande</strong>
 </p>
 
-
-<button
-class="remove"
-onclick="removeItem(${index})"
->
+<button class="remove" onclick="removeItem(${index})">
 Supprimer
 </button>
 
@@ -2576,15 +1566,9 @@ Supprimer
 
 </div>
 
-`
-).join("");
+`).join("");
 
 }
-
-
-/* =====================================================
-   SUPPRIMER
-===================================================== */
 
 function removeItem(index){
 
@@ -2594,11 +1578,6 @@ updateCart();
 
 }
 
-
-/* =====================================================
-   VIDER
-===================================================== */
-
 function clearCart(){
 
 cart=[];
@@ -2607,151 +1586,73 @@ updateCart();
 
 }
 
-
-/* =====================================================
-   OUVRIR
-===================================================== */
-
 function openCart(){
 
-document
-.getElementById("cart")
-.classList.add("active");
+document.getElementById("cart").classList.add("active");
 
-
-document
-.getElementById("overlay")
-.classList.add("active");
+document.getElementById("overlay").classList.add("active");
 
 }
-
-
-/* =====================================================
-   FERMER
-===================================================== */
 
 function closeCart(){
 
-document
-.getElementById("cart")
-.classList.remove("active");
+document.getElementById("cart").classList.remove("active");
 
-
-document
-.getElementById("overlay")
-.classList.remove("active");
+document.getElementById("overlay").classList.remove("active");
 
 }
-
-
-/* =====================================================
-   WHATSAPP
-===================================================== */
 
 function sendWhatsApp(){
 
 if(!cart.length){
 
-showToast(
-"Votre panier est vide"
-);
+showToast("Votre panier est vide");
 
 return;
 
 }
 
+let message="Bonjour Thiam Création 👋🏽%0A%0A";
 
-let message =
-"Bonjour Thiam Création 👋🏽%0A%0A";
+message+="Je souhaite commander :%0A%0A";
 
+cart.forEach((item,index)=>{
 
-message +=
-"Je souhaite commander :%0A%0A";
+message+=
+"🧵 Article "+(index+1)+"%0A"+
+"Modèle : "+item.name+"%0A"+
+"Taille : "+item.size+"%0A"+
+"Prix : Sur commande%0A%0A";
 
+});
 
-cart.forEach(
-(item,index)=>{
-
-message +=
-
-"🧵 Article " +
-(index+1) +
-"%0A" +
-
-"Modèle : " +
-item.name +
-"%0A" +
-
-"Taille : " +
-item.size +
-"%0A" +
-
-"Prix : Sur commande" +
-"%0A%0A";
-
-}
-);
-
-
-message +=
-"Merci de me communiquer le prix et la disponibilité. 🙏🏽";
-
+message+="Merci de me communiquer le prix et la disponibilité. 🙏🏽";
 
 window.open(
-
-"https://wa.me/" +
-whatsappNumber +
-"?text=" +
-message,
-
+"https://wa.me/"+whatsappNumber+"?text="+message,
 "_blank"
-
 );
 
 }
-
-
-/* =====================================================
-   TOAST
-===================================================== */
 
 function showToast(text){
 
-const toast =
-document.getElementById("toast");
+const toast=document.getElementById("toast");
 
-
-toast.textContent =
-text;
-
+toast.textContent=text;
 
 toast.classList.add("show");
 
-
-setTimeout(
-()=>{
-
+setTimeout(()=>{
 toast.classList.remove("show");
-
-},
-2200
-);
+},2200);
 
 }
 
-
-/* =====================================================
-   ESC
-===================================================== */
-
-document.addEventListener(
-"keydown",
-event=>{
+document.addEventListener("keydown",event=>{
 
 if(event.key==="Escape"){
-
 closeCart();
-
 }
 
 });
