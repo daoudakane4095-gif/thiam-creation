@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>THIAM CRÉATION | Prêt-à-porter Dakar</title>
-  <meta name="description" content="THIAM CRÉATION — Boutique de prêt-à-porter moderne à Dakar, Sénégal.">
+  <title>THIAM CRÉATION — Couture & Prêt-à-Porter</title>
+
+  <meta
+    name="description"
+    content="THIAM CRÉATION — Couture, confection, sur mesure et prêt-à-porter à Dakar, Sénégal."
+  >
 
   <style>
     * {
@@ -15,12 +19,14 @@
     }
 
     :root {
-      --black: #080808;
-      --black-soft: #111111;
-      --gray-dark: #1c1c1c;
-      --gray: #777;
-      --gray-light: #d7d7d7;
+      --black: #070707;
+      --black2: #0d0d0d;
+      --black3: #141414;
+      --gray: #242424;
+      --gray2: #777;
+      --gray3: #bdbdbd;
       --white: #ffffff;
+      --border: rgba(255,255,255,.12);
     }
 
     html {
@@ -28,15 +34,15 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
       background: var(--black);
       color: var(--white);
-      line-height: 1.5;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
     button {
@@ -51,71 +57,85 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
+      right: 0;
       z-index: 1000;
-      background: rgba(8, 8, 8, 0.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid #252525;
+      background: rgba(7,7,7,.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
     }
 
-    .navbar {
-      max-width: 1200px;
-      margin: auto;
+    .nav {
+      max-width: 1250px;
       height: 76px;
+      margin: auto;
       padding: 0 22px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 20px;
     }
 
-    .logo {
-      font-size: 22px;
-      font-weight: 900;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
       letter-spacing: 2px;
+      white-space: nowrap;
     }
 
-    .logo span {
-      color: #aaa;
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      font-size: 17px;
+    }
+
+    .brand-name span {
+      color: #888;
       font-weight: 400;
     }
 
     .nav-links {
       display: flex;
-      gap: 30px;
       align-items: center;
-      list-style: none;
+      gap: 28px;
     }
 
     .nav-links a {
-      color: #ddd;
-      font-size: 14px;
-      transition: 0.3s;
+      font-size: 13px;
+      color: #ccc;
+      transition: .3s;
     }
 
     .nav-links a:hover {
-      color: white;
+      color: #fff;
     }
 
-    .cart-button {
-      border: 1px solid #444;
+    .cart-btn {
+      border: 1px solid #555;
       background: #171717;
-      color: white;
-      padding: 10px 16px;
+      color: #fff;
+      padding: 10px 15px;
       border-radius: 30px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: .3s;
     }
 
-    .cart-button:hover {
-      background: #2a2a2a;
+    .cart-btn:hover {
+      background: #292929;
     }
 
-    .hamburger {
+    .menu-btn {
       display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 27px;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      font-size: 28px;
       cursor: pointer;
     }
 
@@ -125,81 +145,188 @@
 
     .hero {
       min-height: 100vh;
-      padding: 150px 22px 80px;
+      padding: 120px 22px 70px;
+
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
+
       background:
-        radial-gradient(circle at 50% 20%, #303030 0%, #111 35%, #080808 70%);
+        radial-gradient(circle at 20% 30%, #333 0%, transparent 30%),
+        radial-gradient(circle at 85% 45%, #222 0%, transparent 35%),
+        linear-gradient(120deg, #070707, #171717 50%, #070707);
     }
 
-    .hero-content {
-      max-width: 850px;
+    .hero-inner {
+      width: 100%;
+      max-width: 1250px;
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
     }
 
-    .hero-label {
+    .hero-logo {
+      width: min(430px, 90%);
+      max-height: 470px;
+      object-fit: contain;
+      display: block;
+      margin-bottom: 25px;
+      filter: drop-shadow(0 20px 45px rgba(0,0,0,.7));
+    }
+
+    .hero-text .small {
       color: #aaa;
+      font-size: 12px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      font-size: 12px;
+      margin-bottom: 15px;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(42px, 7vw, 78px);
+      line-height: .95;
+      letter-spacing: -3px;
       margin-bottom: 20px;
     }
 
-    .hero h1 {
-      font-size: clamp(48px, 10vw, 105px);
-      line-height: 0.95;
-      letter-spacing: -4px;
-      font-weight: 900;
-      margin-bottom: 25px;
+    .hero-text h1 span {
+      color: #8a8a8a;
     }
 
-    .hero h1 span {
-      color: #999;
-    }
-
-    .hero p {
-      max-width: 580px;
-      margin: auto;
+    .hero-text p {
       color: #aaa;
+      max-width: 570px;
       font-size: 17px;
+      line-height: 1.7;
     }
 
     .hero-buttons {
-      margin-top: 35px;
       display: flex;
-      justify-content: center;
       gap: 12px;
       flex-wrap: wrap;
+      margin-top: 30px;
     }
 
     .btn {
-      display: inline-block;
-      padding: 14px 24px;
+      padding: 14px 22px;
       border-radius: 5px;
       font-weight: 700;
-      font-size: 14px;
-      transition: 0.3s;
-      cursor: pointer;
+      font-size: 13px;
+      transition: .3s;
+      display: inline-block;
     }
 
-    .btn-primary {
-      background: white;
-      color: black;
+    .btn-white {
+      background: #fff;
+      color: #000;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
+    .btn-white:hover {
+      transform: translateY(-3px);
       background: #ddd;
     }
 
-    .btn-secondary {
+    .btn-outline {
       border: 1px solid #555;
-      color: white;
+      color: #fff;
     }
 
-    .btn-secondary:hover {
-      background: #1c1c1c;
+    .btn-outline:hover {
+      background: #222;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 570px;
+
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.08),
+          rgba(255,255,255,.01)
+        ),
+        #101010;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-visual::before {
+      content: "THIAM CRÉATION";
+      position: absolute;
+      font-size: 80px;
+      font-weight: 900;
+      color: rgba(255,255,255,.025);
+      transform: rotate(-20deg);
+      white-space: nowrap;
+    }
+
+    .hero-visual-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .needle {
+      font-size: 90px;
+      color: #999;
+      margin-bottom: 15px;
+    }
+
+    .hero-visual-content h2 {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .hero-visual-content p {
+      color: #777;
+    }
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .features {
+      max-width: 1200px;
+      margin: -30px auto 0;
+      position: relative;
+      z-index: 10;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      background: #141414;
+      border: 1px solid var(--border);
+    }
+
+    .feature {
+      padding: 25px 20px;
+      border-right: 1px solid var(--border);
+    }
+
+    .feature:last-child {
+      border-right: 0;
+    }
+
+    .feature-icon {
+      font-size: 27px;
+      margin-bottom: 10px;
+    }
+
+    .feature h3 {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .feature p {
+      color: #777;
+      font-size: 12px;
     }
 
     /* =========================
@@ -215,27 +342,146 @@
       margin: auto;
     }
 
-    .section-header {
+    .section-top {
       margin-bottom: 45px;
     }
 
-    .section-label {
+    .eyebrow {
       color: #888;
-      font-size: 12px;
-      letter-spacing: 3px;
       text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 11px;
       margin-bottom: 10px;
     }
 
     .section-title {
-      font-size: clamp(32px, 6vw, 55px);
+      font-size: clamp(34px, 6vw, 60px);
       letter-spacing: -2px;
     }
 
     .section-description {
-      color: #888;
-      max-width: 600px;
+      color: #777;
+      max-width: 650px;
       margin-top: 12px;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       SERVICES
+    ========================= */
+
+    .services {
+      background: #0c0c0c;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service {
+      padding: 35px;
+      background: #141414;
+      border: 1px solid var(--border);
+      transition: .35s;
+    }
+
+    .service:hover {
+      transform: translateY(-5px);
+      border-color: #555;
+    }
+
+    .service-number {
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 30px;
+    }
+
+    .service h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .service p {
+      color: #777;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* =========================
+       GALERIE
+    ========================= */
+
+    .gallery {
+      background: #080808;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .gallery-item {
+      height: 360px;
+      background: #151515;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(7) {
+      grid-row: span 1;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: .5s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 15px;
+      bottom: 15px;
+      padding: 8px 12px;
+      background: rgba(0,0,0,.75);
+      backdrop-filter: blur(8px);
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    /* =========================
+       VIDEO
+    ========================= */
+
+    .video-section {
+      background: #111;
+    }
+
+    .video-box {
+      max-width: 850px;
+      margin: auto;
+      background: #050505;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .video-box video {
+      width: 100%;
+      display: block;
+      max-height: 700px;
+      object-fit: contain;
+      background: #000;
     }
 
     /* =========================
@@ -243,7 +489,7 @@
     ========================= */
 
     .collection {
-      background: #0d0d0d;
+      background: #0c0c0c;
     }
 
     .products {
@@ -254,9 +500,9 @@
 
     .product {
       background: #151515;
-      border: 1px solid #272727;
+      border: 1px solid var(--border);
       overflow: hidden;
-      transition: 0.35s;
+      transition: .3s;
     }
 
     .product:hover {
@@ -264,30 +510,28 @@
       border-color: #555;
     }
 
-    .product-image {
+    .product-photo {
       height: 360px;
-      background:
-        linear-gradient(135deg, #3a3a3a, #151515);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #777;
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      background: #202020;
+      overflow: hidden;
+    }
+
+    .product-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .product-info {
       padding: 20px;
     }
 
-    .product-name {
+    .product-info h3 {
       font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
 
-    .product-description {
+    .product-info p {
       color: #777;
       font-size: 13px;
       margin-bottom: 15px;
@@ -295,21 +539,20 @@
 
     .product-bottom {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 10px;
     }
 
     .price {
       font-weight: 800;
-      font-size: 17px;
     }
 
-    .add-cart {
-      background: white;
-      color: black;
-      border: none;
-      padding: 10px 14px;
+    .add {
+      background: #fff;
+      color: #000;
+      border: 0;
+      padding: 10px 13px;
       border-radius: 4px;
       font-weight: 700;
       cursor: pointer;
@@ -330,26 +573,27 @@
       align-items: center;
     }
 
-    .about-box {
-      min-height: 400px;
-      background:
-        linear-gradient(145deg, #292929, #101010);
-      border: 1px solid #292929;
+    .about-photo {
+      min-height: 500px;
+      background: #151515;
+      border: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
       color: #777;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+      padding: 30px;
     }
 
     .about-text h2 {
-      font-size: 45px;
-      margin-bottom: 20px;
+      font-size: clamp(36px, 5vw, 55px);
+      line-height: 1;
+      margin-bottom: 25px;
     }
 
     .about-text p {
-      color: #999;
+      color: #888;
+      line-height: 1.8;
       margin-bottom: 15px;
     }
 
@@ -358,41 +602,48 @@
     ========================= */
 
     .contact {
-      background: #111;
+      background: #141414;
       text-align: center;
     }
 
     .contact-card {
-      max-width: 750px;
+      max-width: 800px;
       margin: auto;
-      padding: 50px 25px;
-      border: 1px solid #303030;
-      background: #151515;
+      padding: 60px 25px;
+      border: 1px solid var(--border);
+      background: #0d0d0d;
     }
 
     .contact-card h2 {
-      font-size: 40px;
+      font-size: clamp(35px, 6vw, 58px);
       margin-bottom: 15px;
     }
 
     .contact-card p {
-      color: #999;
+      color: #888;
       margin-bottom: 25px;
     }
 
     .whatsapp {
-      display: inline-block;
-      background: white;
-      color: black;
-      padding: 14px 25px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      color: #000;
+      padding: 15px 25px;
       border-radius: 5px;
       font-weight: 800;
-      transition: 0.3s;
+      transition: .3s;
     }
 
     .whatsapp:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
       background: #ddd;
+    }
+
+    .phone {
+      margin-top: 20px;
+      color: #777;
     }
 
     /* =========================
@@ -400,12 +651,12 @@
     ========================= */
 
     footer {
+      background: #050505;
+      border-top: 1px solid var(--border);
       padding: 35px 22px;
-      border-top: 1px solid #222;
-      background: #080808;
     }
 
-    .footer-content {
+    .footer-inner {
       max-width: 1200px;
       margin: auto;
       display: flex;
@@ -414,37 +665,73 @@
       flex-wrap: wrap;
     }
 
-    .footer-content p {
+    footer p {
       color: #666;
       font-size: 13px;
+    }
+
+    /* =========================
+       LIGHTBOX
+    ========================= */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.94);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 95%;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .close-lightbox {
+      position: fixed;
+      top: 20px;
+      right: 25px;
+      background: transparent;
+      border: 0;
+      color: white;
+      font-size: 35px;
+      cursor: pointer;
     }
 
     /* =========================
        CART
     ========================= */
 
-    .cart-overlay {
+    .overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.7);
-      z-index: 2000;
+      background: rgba(0,0,0,.75);
+      z-index: 4000;
       display: none;
     }
 
-    .cart-overlay.active {
+    .overlay.active {
       display: block;
     }
 
     .cart {
       position: fixed;
       top: 0;
-      right: -430px;
-      width: min(430px, 100%);
+      right: -450px;
+      width: min(450px,100%);
       height: 100vh;
       background: #111;
-      z-index: 2100;
+      z-index: 4100;
       border-left: 1px solid #333;
-      transition: 0.35s;
+      transition: .35s;
       display: flex;
       flex-direction: column;
     }
@@ -453,7 +740,7 @@
       right: 0;
     }
 
-    .cart-header {
+    .cart-head {
       padding: 22px;
       border-bottom: 1px solid #292929;
       display: flex;
@@ -461,75 +748,72 @@
       align-items: center;
     }
 
-    .cart-header h2 {
+    .cart-head h2 {
       font-size: 22px;
     }
 
     .close-cart {
+      border: 0;
       background: none;
-      border: none;
       color: white;
-      font-size: 25px;
+      font-size: 30px;
       cursor: pointer;
     }
 
     .cart-items {
-      padding: 20px;
       flex: 1;
       overflow-y: auto;
+      padding: 20px;
     }
 
-    .empty-cart {
-      color: #777;
+    .empty {
       text-align: center;
+      color: #777;
       padding: 50px 10px;
     }
 
     .cart-item {
-      border-bottom: 1px solid #292929;
       padding: 15px 0;
+      border-bottom: 1px solid #292929;
     }
 
-    .cart-item-name {
-      font-weight: 700;
+    .cart-item strong {
+      display: block;
+      margin-bottom: 5px;
     }
 
-    .cart-item-info {
-      color: #888;
-      font-size: 13px;
-      margin-top: 4px;
+    .cart-item small {
+      color: #777;
     }
 
-    .remove-item {
+    .remove {
       margin-top: 8px;
+      border: 0;
       background: none;
-      border: none;
-      color: #aaa;
-      cursor: pointer;
+      color: #999;
       text-decoration: underline;
+      cursor: pointer;
     }
 
-    .cart-footer {
+    .cart-bottom {
       padding: 20px;
       border-top: 1px solid #292929;
     }
 
-    .cart-total {
+    .total {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 15px;
-      font-size: 18px;
       font-weight: 800;
+      font-size: 18px;
+      margin-bottom: 15px;
     }
 
     .checkout {
-      display: block;
       width: 100%;
-      text-align: center;
-      padding: 14px;
-      background: white;
-      color: black;
-      border: none;
+      border: 0;
+      background: #fff;
+      color: #000;
+      padding: 15px;
       font-weight: 800;
       cursor: pointer;
       border-radius: 4px;
@@ -539,51 +823,92 @@
        MOBILE
     ========================= */
 
-    @media (max-width: 800px) {
+    @media(max-width: 850px) {
 
-      .navbar {
+      .nav {
         height: 68px;
       }
 
       .nav-links {
+        display: none;
         position: absolute;
         top: 68px;
         left: 0;
-        width: 100%;
-        background: #0c0c0c;
-        border-bottom: 1px solid #292929;
-        padding: 20px;
-        display: none;
+        right: 0;
+        background: #0b0b0b;
+        border-bottom: 1px solid var(--border);
+        padding: 25px;
         flex-direction: column;
-        gap: 20px;
+        align-items: stretch;
       }
 
       .nav-links.active {
         display: flex;
       }
 
-      .hamburger {
+      .nav-links a {
+        padding: 8px 0;
+      }
+
+      .menu-btn {
         display: block;
       }
 
-      .desktop-cart {
-        display: none;
+      .brand img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .brand-name {
+        font-size: 14px;
       }
 
       .hero {
-        padding-top: 130px;
+        padding-top: 110px;
       }
 
-      .hero h1 {
-        letter-spacing: -2px;
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-logo {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-visual {
+        min-height: 330px;
+      }
+
+      .features {
+        grid-template-columns: 1fr 1fr;
+        margin: 0 18px;
+      }
+
+      .feature:nth-child(2) {
+        border-right: 0;
+      }
+
+      .feature:nth-child(3),
+      .feature:nth-child(4) {
+        border-top: 1px solid var(--border);
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-item {
+        height: 280px;
       }
 
       .products {
         grid-template-columns: 1fr;
-      }
-
-      .product-image {
-        height: 390px;
       }
 
       .about-grid {
@@ -591,21 +916,41 @@
         gap: 35px;
       }
 
-      .about-box {
-        min-height: 300px;
-      }
-
-      .about-text h2 {
-        font-size: 36px;
+      .about-photo {
+        min-height: 330px;
       }
 
       section {
         padding: 75px 18px;
       }
 
-      .footer-content {
+      .footer-inner {
         flex-direction: column;
         text-align: center;
+      }
+    }
+
+    @media(max-width: 500px) {
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-item {
+        height: 380px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .feature {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .feature:last-child {
+        border-bottom: 0;
       }
     }
   </style>
@@ -615,326 +960,814 @@
 
   <!-- =========================
        HEADER
-  ========================== -->
+  ========================= -->
 
   <header>
-    <nav class="navbar">
 
-      <a href="#accueil" class="logo">
-        THIAM <span>CRÉATION</span>
+    <nav class="nav">
+
+      <a href="#accueil" class="brand">
+
+        <img
+          src="logo-thiam.png"
+          alt="Logo THIAM CRÉATION"
+        >
+
+        <div class="brand-name">
+          THIAM <span>CRÉATION</span>
+        </div>
+
       </a>
 
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#collection">Collection</a></li>
-        <li><a href="#apropos">À propos</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li>
-          <button class="cart-button" onclick="openCart()">
-            🛒 Panier <span id="cartCount">0</span>
-          </button>
-        </li>
-      </ul>
 
-      <button class="hamburger" onclick="toggleMenu()">
+      <div class="nav-links" id="navLinks">
+
+        <a href="#accueil">Accueil</a>
+        <a href="#collection">Collection</a>
+        <a href="#couture">Couture</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#apropos">À propos</a>
+        <a href="#contact">Contact</a>
+
+        <button
+          class="cart-btn"
+          onclick="openCart()"
+        >
+          🛒 Panier
+          <span id="cartCount">0</span>
+        </button>
+
+      </div>
+
+
+      <button
+        class="menu-btn"
+        onclick="toggleMenu()"
+      >
         ☰
       </button>
 
-      <button class="cart-button desktop-cart" onclick="openCart()">
-        🛒 <span id="cartCountDesktop">0</span>
-      </button>
-
     </nav>
+
   </header>
 
 
   <!-- =========================
-       HERO
-  ========================== -->
+       ACCUEIL
+  ========================= -->
 
-  <main>
+  <section class="hero" id="accueil">
 
-    <section class="hero" id="accueil">
-      <div class="hero-content">
+    <div class="hero-inner">
 
-        <div class="hero-label">
-          Prêt-à-porter • Dakar, Sénégal
+      <div class="hero-text">
+
+        <div class="small">
+          Couture • Confection • Sur mesure
         </div>
 
+        <img
+          class="hero-logo"
+          src="logo-thiam.png"
+          alt="THIAM CRÉATION"
+        >
+
         <h1>
-          THIAM<br>
-          <span>CRÉATION</span>
+          Le style.<br>
+          <span>Notre savoir-faire.</span>
         </h1>
 
         <p>
-          Une sélection de prêt-à-porter moderne,
-          pensée pour celles et ceux qui veulent
-          affirmer leur style.
+          THIAM CRÉATION vous accompagne dans la
+          création de tenues uniques, la confection
+          sur mesure et le prêt-à-porter à Dakar.
         </p>
 
         <div class="hero-buttons">
-          <a href="#collection" class="btn btn-primary">
+
+          <a
+            href="#collection"
+            class="btn btn-white"
+          >
             DÉCOUVRIR LA COLLECTION
           </a>
 
-          <a href="#contact" class="btn btn-secondary">
-            NOUS CONTACTER
+          <a
+            href="https://wa.me/221786086090?text=Bonjour%20THIAM%20CRÉATION%2C%20je%20souhaite%20passer%20une%20commande."
+            target="_blank"
+            class="btn btn-outline"
+          >
+            💬 WHATSAPP
           </a>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =========================
-         COLLECTION
-    ========================== -->
-
-    <section class="collection" id="collection">
-
-      <div class="container">
-
-        <div class="section-header">
-          <div class="section-label">
-            Notre sélection
-          </div>
-
-          <h2 class="section-title">
-            Collection
-          </h2>
-
-          <p class="section-description">
-            Découvrez nos pièces de prêt-à-porter.
-            Les photos définitives seront ajoutées prochainement.
-          </p>
-        </div>
-
-
-        <div class="products">
-
-          <!-- PRODUIT 1 -->
-          <article class="product">
-
-            <div class="product-image">
-              Photo à venir
-            </div>
-
-            <div class="product-info">
-
-              <h3 class="product-name">
-                Ensemble Thiam
-              </h3>
-
-              <p class="product-description">
-                Prêt-à-porter moderne
-              </p>
-
-              <div class="product-bottom">
-
-                <span class="price">
-                  15 000 FCFA
-                </span>
-
-                <button
-                  class="add-cart"
-                  onclick="addToCart('Ensemble Thiam', 15000)"
-                >
-                  Ajouter
-                </button>
-
-              </div>
-
-            </div>
-          </article>
-
-
-          <!-- PRODUIT 2 -->
-          <article class="product">
-
-            <div class="product-image">
-              Photo à venir
-            </div>
-
-            <div class="product-info">
-
-              <h3 class="product-name">
-                Chemise Premium
-              </h3>
-
-              <p class="product-description">
-                Coupe moderne
-              </p>
-
-              <div class="product-bottom">
-
-                <span class="price">
-                  12 500 FCFA
-                </span>
-
-                <button
-                  class="add-cart"
-                  onclick="addToCart('Chemise Premium', 12500)"
-                >
-                  Ajouter
-                </button>
-
-              </div>
-
-            </div>
-          </article>
-
-
-          <!-- PRODUIT 3 -->
-          <article class="product">
-
-            <div class="product-image">
-              Photo à venir
-            </div>
-
-            <div class="product-info">
-
-              <h3 class="product-name">
-                Pantalon Élégance
-              </h3>
-
-              <p class="product-description">
-                Style contemporain
-              </p>
-
-              <div class="product-bottom">
-
-                <span class="price">
-                  14 000 FCFA
-                </span>
-
-                <button
-                  class="add-cart"
-                  onclick="addToCart('Pantalon Élégance', 14000)"
-                >
-                  Ajouter
-                </button>
-
-              </div>
-
-            </div>
-          </article>
 
         </div>
 
       </div>
 
-    </section>
 
+      <div class="hero-visual">
 
-    <!-- =========================
-         À PROPOS
-    ========================== -->
+        <div class="hero-visual-content">
 
-    <section class="about" id="apropos">
-
-      <div class="container">
-
-        <div class="about-grid">
-
-          <div class="about-box">
-            THIAM CRÉATION
-          </div>
-
-          <div class="about-text">
-
-            <div class="section-label">
-              Notre histoire
-            </div>
-
-            <h2>
-              Le style.<br>
-              Autrement.
-            </h2>
-
-            <p>
-              THIAM CRÉATION est une marque de
-              prêt-à-porter basée à Dakar, au Sénégal.
-            </p>
-
-            <p>
-              Notre objectif est de proposer des
-              vêtements modernes, élégants et accessibles,
-              avec une identité forte.
-            </p>
-
-            <p>
-              Les images et les collections définitives
-              seront ajoutées prochainement.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         CONTACT
-    ========================== -->
-
-    <section class="contact" id="contact">
-
-      <div class="container">
-
-        <div class="contact-card">
-
-          <div class="section-label">
-            Dakar • Sénégal
+          <div class="needle">
+            ✂
           </div>
 
           <h2>
-            Une question ?
+            COUTURE
           </h2>
 
           <p>
-            Contactez THIAM CRÉATION directement
-            sur WhatsApp pour vos commandes et
-            renseignements.
+            Création • Confection • Sur mesure
           </p>
-
-          <a
-            class="whatsapp"
-            href="https://wa.me/221786086090?text=Bonjour%20THIAM%20CRÉATION%2C%20je%20souhaite%20avoir%20des%20informations%20sur%20vos%20articles."
-            target="_blank"
-          >
-            💬 Commander sur WhatsApp
-          </a>
 
         </div>
 
       </div>
 
-    </section>
+    </div>
 
-  </main>
+  </section>
+
+
+  <!-- =========================
+       FEATURES
+  ========================= -->
+
+  <div class="features">
+
+    <div class="feature">
+      <div class="feature-icon">✂️</div>
+      <h3>COUTURE SUR MESURE</h3>
+      <p>Des créations adaptées à votre style.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">🪡</div>
+      <h3>CONFECTION</h3>
+      <p>Précision et savoir-faire.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">👔</div>
+      <h3>PRÊT-À-PORTER</h3>
+      <p>Des pièces modernes et élégantes.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">📦</div>
+      <h3>DAKAR & SÉNÉGAL</h3>
+      <p>Commandez facilement sur WhatsApp.</p>
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       SERVICES
+  ========================= -->
+
+  <section class="services" id="couture">
+
+    <div class="container">
+
+      <div class="section-top">
+
+        <div class="eyebrow">
+          Notre savoir-faire
+        </div>
+
+        <h2 class="section-title">
+          Couture & Confection
+        </h2>
+
+        <p class="section-description">
+          THIAM CRÉATION réalise des vêtements
+          pensés selon vos envies, votre style et
+          vos mesures.
+        </p>
+
+      </div>
+
+
+      <div class="service-grid">
+
+        <div class="service">
+
+          <div class="service-number">
+            01
+          </div>
+
+          <h3>
+            Sur mesure
+          </h3>
+
+          <p>
+            Une tenue créée selon vos mesures,
+            votre morphologie et vos préférences.
+          </p>
+
+        </div>
+
+
+        <div class="service">
+
+          <div class="service-number">
+            02
+          </div>
+
+          <h3>
+            Confection
+          </h3>
+
+          <p>
+            Création et assemblage de vêtements
+            avec une attention particulière aux finitions.
+          </p>
+
+        </div>
+
+
+        <div class="service">
+
+          <div class="service-number">
+            03
+          </div>
+
+          <h3>
+            Prêt-à-porter
+          </h3>
+
+          <p>
+            Une sélection de pièces modernes
+            disponibles à la commande.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       COLLECTION
+  ========================= -->
+
+  <section class="collection" id="collection">
+
+    <div class="container">
+
+      <div class="section-top">
+
+        <div class="eyebrow">
+          THIAM CRÉATION
+        </div>
+
+        <h2 class="section-title">
+          Collection
+        </h2>
+
+        <p class="section-description">
+          Découvrez quelques créations de THIAM CRÉATION.
+          Les informations et tarifs pourront être
+          personnalisés ensuite.
+        </p>
+
+      </div>
+
+
+      <div class="products">
+
+
+        <!-- PRODUIT 1 -->
+
+        <article class="product">
+
+          <div class="product-photo">
+
+            <img
+              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/047237ff-9044-4b47-818e-5411bdd8163c.jpeg"
+              alt="Création THIAM CRÉATION"
+            >
+
+          </div>
+
+          <div class="product-info">
+
+            <h3>
+              Création Premium
+            </h3>
+
+            <p>
+              Couture & confection
+            </p>
+
+            <div class="product-bottom">
+
+              <span class="price">
+                25 000 FCFA
+              </span>
+
+              <button
+                class="add"
+                onclick="addToCart('Création Premium',25000)"
+              >
+                Ajouter
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUIT 2 -->
+
+        <article class="product">
+
+          <div class="product-photo">
+
+            <img
+              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/0a15daa6-c5b0-4d95-850b-217edc5b9234.jpeg"
+              alt="Création THIAM CRÉATION"
+            >
+
+          </div>
+
+          <div class="product-info">
+
+            <h3>
+              Ensemble Élégance
+            </h3>
+
+            <p>
+              Prêt-à-porter
+            </p>
+
+            <div class="product-bottom">
+
+              <span class="price">
+                30 000 FCFA
+              </span>
+
+              <button
+                class="add"
+                onclick="addToCart('Ensemble Élégance',30000)"
+              >
+                Ajouter
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUIT 3 -->
+
+        <article class="product">
+
+          <div class="product-photo">
+
+            <img
+              src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/19c5dbce-1d70-48a9-bdb2-dec230108b77.jpeg"
+              alt="Création THIAM CRÉATION"
+            >
+
+          </div>
+
+          <div class="product-info">
+
+            <h3>
+              Création Sur Mesure
+            </h3>
+
+            <p>
+              Confection personnalisée
+            </p>
+
+            <div class="product-bottom">
+
+              <span class="price">
+                35 000 FCFA
+              </span>
+
+              <button
+                class="add"
+                onclick="addToCart('Création Sur Mesure',35000)"
+              >
+                Ajouter
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       GALERIE
+  ========================= -->
+
+  <section class="gallery" id="galerie">
+
+    <div class="container">
+
+      <div class="section-top">
+
+        <div class="eyebrow">
+          Nos créations
+        </div>
+
+        <h2 class="section-title">
+          Galerie
+        </h2>
+
+        <p class="section-description">
+          Retrouvez les créations de THIAM CRÉATION.
+          Appuyez sur une photo pour l'agrandir.
+        </p>
+
+      </div>
+
+
+      <div class="gallery-grid">
+
+
+        <div
+          class="gallery-item"
+          onclick="openLightbox(this)"
+        >
+          <img
+            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/047237ff-9044-4b47-818e-5411bdd8163c.jpeg"
+            alt="THIAM CRÉATION"
+          >
+          <div class="gallery-label">
+            THIAM CRÉATION
+          </div>
+        </div>
+
+
+        <div
+          class="gallery-item"
+          onclick="openLightbox(this)"
+        >
+          <img
+            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/0a15daa6-c5b0-4d95-850b-217edc5b9234.jpeg"
+            alt="THIAM CRÉATION"
+          >
+          <div class="gallery-label">
+            COLLECTION
+          </div>
+        </div>
+
+
+        <div
+          class="gallery-item"
+          onclick="openLightbox(this)"
+        >
+          <img
+            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/19c5dbce-1d70-48a9-bdb2-dec230108b77.jpeg"
+            alt="THIAM CRÉATION"
+          >
+          <div class="gallery-label">
+            CRÉATION
+          </div>
+        </div>
+
+
+        <div
+          class="gallery-item"
+          onclick="openLightbox(this)"
+        >
+          <img
+            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/5469bc6c-1d5b-4fed-a546-46eeb5967c25.jpeg"
+            alt="THIAM CRÉATION"
+          >
+          <div class="gallery-label">
+            CONFECTION
+          </div>
+        </div>
+
+
+        <div
+          class="gallery-item"
+          onclick="openLightbox(this)"
+        >
+          <img
+            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/6e4399cd-0342-4591-87e7-d8e34bf8f52a.jpeg"
+            alt="THIAM CRÉATION"
+          >
+          <div class="gallery-label">
+            SUR MESURE
+          </div>
+        </div>
+
+
+        <div
+          class="gallery-item"
+          onclick="openLightbox(this)"
+        >
+          <img
+            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/997cbf29-70c9-45c2-8269-15d75d3f945c.jpeg"
+            alt="THIAM CRÉATION"
+          >
+          <div class="gallery-label">
+            STYLE
+          </div>
+        </div>
+
+
+        <div
+          class="gallery-item"
+          onclick="openLightbox(this)"
+        >
+          <img
+            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/99c40e61-14fe-4686-9b35-58a49f5efa47.jpeg"
+            alt="THIAM CRÉATION"
+          >
+          <div class="gallery-label">
+            COLLECTION
+          </div>
+        </div>
+
+
+        <div
+          class="gallery-item"
+          onclick="openLightbox(this)"
+        >
+          <img
+            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/cefaaea4-bb63-45cd-8a51-e57fc825f560.jpeg"
+            alt="THIAM CRÉATION"
+          >
+          <div class="gallery-label">
+            CRÉATION
+          </div>
+        </div>
+
+
+        <div
+          class="gallery-item"
+          onclick="openLightbox(this)"
+        >
+          <img
+            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/d03f482a-9a4b-48db-9ca1-d5f4bf212bb7.jpeg"
+            alt="THIAM CRÉATION"
+          >
+          <div class="gallery-label">
+            COUTURE
+          </div>
+        </div>
+
+
+        <div
+          class="gallery-item"
+          onclick="openLightbox(this)"
+        >
+          <img
+            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/da2189a9-f552-47f8-a872-c2ca7a1f77e1.jpeg"
+            alt="THIAM CRÉATION"
+          >
+          <div class="gallery-label">
+            THIAM
+          </div>
+        </div>
+
+
+        <div
+          class="gallery-item"
+          onclick="openLightbox(this)"
+        >
+          <img
+            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/f1706467-d736-4ceb-ba15-12a81bdf6e2a.jpeg"
+            alt="THIAM CRÉATION"
+          >
+          <div class="gallery-label">
+            CRÉATION
+          </div>
+        </div>
+
+
+        <div
+          class="gallery-item"
+          onclick="openLightbox(this)"
+        >
+          <img
+            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/fa85b4bc-2b3c-4b6c-b578-b331018be057.jpeg"
+            alt="THIAM CRÉATION"
+          >
+          <div class="gallery-label">
+            CONFECTION
+          </div>
+        </div>
+
+
+        <div
+          class="gallery-item"
+          onclick="openLightbox(this)"
+        >
+          <img
+            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/68b7226a-4045-47ff-bb13-f32376b385d6.jpeg"
+            alt="THIAM CRÉATION"
+          >
+          <div class="gallery-label">
+            SUR MESURE
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       VIDEO
+  ========================= -->
+
+  <section class="video-section">
+
+    <div class="container">
+
+      <div class="section-top">
+
+        <div class="eyebrow">
+          En atelier
+        </div>
+
+        <h2 class="section-title">
+          Notre savoir-faire en vidéo
+        </h2>
+
+      </div>
+
+
+      <div class="video-box">
+
+        <video
+          controls
+          playsinline
+          preload="metadata"
+        >
+
+          <source
+            src="https://raw.githubusercontent.com/daoudakane4095-gif/thiam-creation/main/c357aba0-8238-4227-9954-064e9af822e4.mov"
+            type="video/quicktime"
+          >
+
+          Votre navigateur ne peut pas lire cette vidéo.
+
+        </video>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       À PROPOS
+  ========================= -->
+
+  <section class="about" id="apropos">
+
+    <div class="container">
+
+      <div class="about-grid">
+
+        <div class="about-photo">
+
+          <div>
+
+            <div style="font-size:70px;margin-bottom:15px;">
+              🪡
+            </div>
+
+            <h3>
+              THIAM CRÉATION
+            </h3>
+
+            <p style="margin-top:10px;">
+              Dakar • Sénégal
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="about-text">
+
+          <div class="eyebrow">
+            Notre histoire
+          </div>
+
+          <h2>
+            Le vêtement<br>
+            devient une identité.
+          </h2>
+
+          <p>
+            THIAM CRÉATION est un atelier de couture
+            spécialisé dans la confection et la création
+            de vêtements.
+          </p>
+
+          <p>
+            Chaque pièce est pensée avec attention afin
+            de proposer un style moderne, élégant et
+            personnalisé.
+          </p>
+
+          <p>
+            Pour une création sur mesure, contactez-nous
+            directement sur WhatsApp.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================= -->
+
+  <section class="contact" id="contact">
+
+    <div class="container">
+
+      <div class="contact-card">
+
+        <div class="eyebrow">
+          Dakar • Sénégal
+        </div>
+
+        <h2>
+          Parlons de votre projet.
+        </h2>
+
+        <p>
+          Besoin d'une tenue sur mesure,
+          d'une confection ou d'une commande ?
+        </p>
+
+        <a
+          class="whatsapp"
+          href="https://wa.me/221786086090?text=Bonjour%20THIAM%20CRÉATION%20👋%0AJe%20souhaite%20avoir%20des%20informations%20sur%20une%20création."
+          target="_blank"
+        >
+          💬 Commander sur WhatsApp
+        </a>
+
+        <div class="phone">
+          +221 78 608 60 90
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
 
 
   <!-- =========================
        FOOTER
-  ========================== -->
+  ========================= -->
 
   <footer>
 
-    <div class="footer-content">
+    <div class="footer-inner">
 
       <p>
         © 2026 THIAM CRÉATION
       </p>
 
       <p>
-        Prêt-à-porter • Dakar, Sénégal
+        Couture • Confection • Sur mesure
       </p>
 
       <p>
-        +221 78 608 60 90
+        Dakar, Sénégal • +221 78 608 60 90
       </p>
 
     </div>
@@ -943,18 +1776,48 @@
 
 
   <!-- =========================
-       PANIER
-  ========================== -->
+       LIGHTBOX
+  ========================= -->
 
   <div
-    class="cart-overlay"
-    id="cartOverlay"
+    class="lightbox"
+    id="lightbox"
+    onclick="closeLightbox()"
+  >
+
+    <button
+      class="close-lightbox"
+      onclick="closeLightbox()"
+    >
+      ×
+    </button>
+
+    <img
+      id="lightboxImage"
+      src=""
+      alt="Photo THIAM CRÉATION"
+    >
+
+  </div>
+
+
+  <!-- =========================
+       PANIER
+  ========================= -->
+
+  <div
+    class="overlay"
+    id="overlay"
     onclick="closeCart()"
   ></div>
 
-  <aside class="cart" id="cart">
 
-    <div class="cart-header">
+  <aside
+    class="cart"
+    id="cart"
+  >
+
+    <div class="cart-head">
 
       <h2>
         Mon panier
@@ -970,18 +1833,21 @@
     </div>
 
 
-    <div class="cart-items" id="cartItems">
+    <div
+      class="cart-items"
+      id="cartItems"
+    >
 
-      <div class="empty-cart">
+      <div class="empty">
         Votre panier est vide.
       </div>
 
     </div>
 
 
-    <div class="cart-footer">
+    <div class="cart-bottom">
 
-      <div class="cart-total">
+      <div class="total">
 
         <span>
           Total
@@ -1007,7 +1873,7 @@
 
   <!-- =========================
        JAVASCRIPT
-  ========================== -->
+  ========================= -->
 
   <script>
 
@@ -1015,31 +1881,37 @@
 
 
     function toggleMenu() {
+
       document
         .getElementById("navLinks")
         .classList.toggle("active");
+
     }
 
 
     function openCart() {
+
       document
         .getElementById("cart")
         .classList.add("active");
 
       document
-        .getElementById("cartOverlay")
+        .getElementById("overlay")
         .classList.add("active");
+
     }
 
 
     function closeCart() {
+
       document
         .getElementById("cart")
         .classList.remove("active");
 
       document
-        .getElementById("cartOverlay")
+        .getElementById("overlay")
         .classList.remove("active");
+
     }
 
 
@@ -1053,84 +1925,87 @@
       updateCart();
 
       openCart();
+
     }
 
 
-    function removeFromCart(index) {
+    function removeItem(index) {
 
       cart.splice(index, 1);
 
       updateCart();
+
     }
 
 
     function updateCart() {
 
-      const cartItems =
+      const items =
         document.getElementById("cartItems");
 
-      const cartCount =
+      const count =
         document.getElementById("cartCount");
 
-      const cartCountDesktop =
-        document.getElementById("cartCountDesktop");
-
-      const cartTotal =
+      const totalElement =
         document.getElementById("cartTotal");
 
 
-      cartCount.textContent = cart.length;
-
-      cartCountDesktop.textContent = cart.length;
+      count.textContent = cart.length;
 
 
       if (cart.length === 0) {
 
-        cartItems.innerHTML = `
-          <div class="empty-cart">
+        items.innerHTML = `
+          <div class="empty">
             Votre panier est vide.
           </div>
         `;
 
-        cartTotal.textContent = "0 FCFA";
+        totalElement.textContent =
+          "0 FCFA";
 
         return;
+
       }
 
 
       let total = 0;
 
 
-      cartItems.innerHTML = cart.map((item, index) => {
+      items.innerHTML =
+        cart.map((item,index) => {
 
-        total += item.price;
+          total += item.price;
 
-        return `
-          <div class="cart-item">
+          return `
+            <div class="cart-item">
 
-            <div class="cart-item-name">
-              ${item.name}
+              <strong>
+                ${item.name}
+              </strong>
+
+              <small>
+                ${item.price.toLocaleString("fr-FR")} FCFA
+              </small>
+
+              <br>
+
+              <button
+                class="remove"
+                onclick="removeItem(${index})"
+              >
+                Supprimer
+              </button>
+
             </div>
+          `;
 
-            <div class="cart-item-info">
-              ${item.price.toLocaleString("fr-FR")} FCFA
-            </div>
-
-            <button
-              class="remove-item"
-              onclick="removeFromCart(${index})"
-            >
-              Supprimer
-            </button>
-
-          </div>
-        `;
-
-      }).join("");
+        }).join("");
 
 
-      cartTotal.textContent =
+      totalElement.textContent =
         total.toLocaleString("fr-FR") + " FCFA";
+
     }
 
 
@@ -1141,24 +2016,25 @@
         alert("Votre panier est vide.");
 
         return;
+
       }
 
 
       let message =
-        "Bonjour THIAM CRÉATION 👋%0A%0A" +
-        "Je souhaite commander :%0A";
+        "Bonjour THIAM CRÉATION 👋\n\n" +
+        "Je souhaite commander :\n";
 
 
       let total = 0;
 
 
-      cart.forEach((item, index) => {
+      cart.forEach((item,index) => {
 
         message +=
-          "%0A" +
+          "\n" +
           (index + 1) +
           ". " +
-          encodeURIComponent(item.name) +
+          item.name +
           " — " +
           item.price.toLocaleString("fr-FR") +
           " FCFA";
@@ -1169,23 +2045,51 @@
 
 
       message +=
-        "%0A%0ATotal : " +
+        "\n\nTotal : " +
         total.toLocaleString("fr-FR") +
         " FCFA";
 
 
       message +=
-        "%0A%0AMerci de m'indiquer les disponibilités et les tailles.";
+        "\n\nJe souhaite connaître les tailles disponibles.";
 
 
       window.open(
-        "https://wa.me/221786086090?text=" + message,
+        "https://wa.me/221786086090?text=" +
+        encodeURIComponent(message),
         "_blank"
       );
+
     }
 
 
-    document.querySelectorAll(".nav-links a")
+    function openLightbox(element) {
+
+      const image =
+        element.querySelector("img");
+
+      document
+        .getElementById("lightboxImage")
+        .src = image.src;
+
+      document
+        .getElementById("lightbox")
+        .classList.add("active");
+
+    }
+
+
+    function closeLightbox() {
+
+      document
+        .getElementById("lightbox")
+        .classList.remove("active");
+
+    }
+
+
+    document
+      .querySelectorAll(".nav-links a")
       .forEach(link => {
 
         link.addEventListener("click", () => {
